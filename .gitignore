@@ -1,0 +1,20 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (in case npm used later)
+node_modules/
+
+# Backups (keep in history but not in future commits)
+# *_backup.html
+
+# Temp
+*.tmp
+*.log
