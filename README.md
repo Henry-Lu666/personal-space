@@ -33,14 +33,13 @@
 
 - 框架：Astro（首选）
 - CSS：原生 CSS + CSS 变量（禁 Tailwind/Bootstrap）
-- 部署：GitHub Pages
-- 仓库：github.com/Henry-Lu666（用户页 henry-lu666.github.io）
+- 部署：GitHub Pages（仓库 `personal-space`）
+- 线上：https://hongzhangxiu.xyz（自定义域名）· 备用 https://henry-lu666.github.io/personal-space/
 
 ## GitHub 信息
 
 - 用户名：Henry-Lu666
-- 邮箱：256360203@student.chuhai.edu.hk
-- 目标仓库：henry-lu666.github.io（待创建）
+- 仓库：https://github.com/Henry-Lu666/personal-space
 
 ## 设计规范摘要
 
