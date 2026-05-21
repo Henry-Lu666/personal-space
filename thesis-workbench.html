@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>论文排版工作台 | Henry Lu</title>
+<meta name="description" content="硕士论文排版人机协作工作台：VBA 多级列表、纯文本填充、人工微调与协作验收清单。">
+<meta property="og:title" content="论文排版工作台 | Henry Lu">
+<meta property="og:description" content="AI 构筑确定性逻辑，人类掌控直觉与微调。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://henry-lu666.github.io/thesis-workbench.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800;900&family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@400;500;600;700&family=DM+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body data-page="studio">
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">HL</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Home</a></li>
+      <li><a href="career.html" data-nav="career">Career</a></li>
+      <li><a href="projects.html" data-nav="projects">Projects</a></li>
+      <li><a href="research.html" data-nav="research">Research</a></li>
+      <li><a href="studio.html" data-nav="studio">Studio</a></li>
+      <li><a href="about.html" data-nav="about">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-hero page-bg-research">
+  <div class="page-hero-bg"></div>
+  <div class="container">
+    <p class="page-eyebrow">Thesis · Workbench</p>
+    <h1 class="page-title">论文排版：人机协作工作台</h1>
+    <p class="page-lead">AI 构筑确定性逻辑 🤖 &nbsp;||&nbsp; 👨‍💻 人类掌控直觉与微调</p>
+    <div class="wb-legend rev">
+      <span>🤖 Agent 执行</span>
+      <span>👨‍💻 人工接管</span>
+      <span>🤝 协作验收</span>
+    </div>
+    <p class="wb-back rev"><a href="studio.html">← 返回内容工作室</a></p>
+  </div>
+</header>
+
+<section class="section-bg bg-calm">
+  <div class="container narrow" style="max-width:880px">
+    <p class="wb-progress rev" id="wb-progress">进度：0 / 0 项已勾选</p>
+
+    <div class="wb-steps">
+
+      <article class="wb-step rev" data-step="1">
+        <div class="wb-num">01</div>
+        <div class="wb-head">
+          <span class="wb-role agent">🤖 Agent 执行</span>
+          <h2>底层架构：多级列表与样式绑定</h2>
+          <div class="wb-body">
+            <p><strong>Agent 目标：</strong>生成 VBA 宏代码，一键解决最繁琐的「1.1、1.1.1」多级列表与标题 1/2/3 的绑定，并设置基础中英文字体。</p>
+            <p><strong>Agent 生成指令</strong>（复制此代码到 WPS/Word 的 VBA 编辑器运行）：</p>
+            <div class="wb-code-wrap">
+              <button type="button" class="wb-copy" data-copy="vba-code">复制代码</button>
+              <pre class="wb-code" id="vba-code">Sub SetupThesisStyles()
+    '绑定多级列表到标题
+    With ListGalleries(wdOutlineNumberGallery).ListTemplates(1).ListLevels(1)
+        .NumberFormat = "%1."
+        .LinkedStyle = "标题 1"
+    End With
+    With ListGalleries(wdOutlineNumberGallery).ListTemplates(1).ListLevels(2)
+        .NumberFormat = "%1.%2."
+        .LinkedStyle = "标题 2"
+    End With
+    With ListGalleries(wdOutlineNumberGallery).ListTemplates(1).ListLevels(3)
+        .NumberFormat = "%1.%2.%3."
+        .LinkedStyle = "标题 3"
+    End With
+
+    '设置中英文字体
+    With ActiveDocument.Styles("标题 1").Font
+        .NameFarEast = "黑体" '中文
+        .NameAscii = "Times New Roman" '英文
+        .Size = 16 '三号
+    End With
+    MsgBox "基础架构搭建完成！"
+End Sub</pre>
+            </div>
+            <p class="wb-note">注：由于 VBA 操作 WPS/Word 列表的兼容性，若代码报错，Agent 也可通过生成 XML 模板文件供人类导入。</p>
+          </div>
+        </div>
+        <button type="button" class="wb-done-btn" data-step-done="1" aria-label="标记步骤 01 完成" title="标记本步完成"></button>
+      </article>
+
+      <article class="wb-step rev" data-step="2">
+        <div class="wb-num">02</div>
+        <div class="wb-head">
+          <span class="wb-role agent">🤖 Agent 执行</span>
+          <h2>内容填充：纯文本与样式套用</h2>
+          <div class="wb-body">
+            <p><strong>Agent 目标：</strong>将大纲和正文写入文档，但绝不带入任何外部格式（防污染），并自动套用对应的标题样式。</p>
+            <p><strong>Agent 执行逻辑：</strong></p>
+            <ul>
+              <li>使用 API 以 <code style="color:var(--cyan);font-size:.85em">PasteFormat=wdFormatPlainText</code> 写入文本。</li>
+              <li>遍历段落，识别到章名时，API 赋予 <code style="color:var(--cyan);font-size:.85em">Style="标题 1"</code>。</li>
+              <li>识别到节名时，赋予 <code style="color:var(--cyan);font-size:.85em">Style="标题 2"</code>，以此类推。</li>
+            </ul>
+          </div>
+        </div>
+        <button type="button" class="wb-done-btn" data-step-done="2" aria-label="标记步骤 02 完成" title="标记本步完成"></button>
+      </article>
+
+      <article class="wb-step rev" data-step="3">
+        <div class="wb-num">03</div>
+        <div class="wb-head">
+          <span class="wb-role human">👨‍💻 人工接管</span>
+          <h2>视觉微调：段落细节与孤行控制</h2>
+          <div class="wb-body">
+            <p>机器无法感知「阅读的美感」，以下是需要你手动微操的清单：</p>
+            <div class="wb-checklist">
+              <div class="wb-check-item" data-check="3-1">
+                <button type="button" class="wb-check-btn" aria-label="勾选微操 1"></button>
+                <div class="wb-check-label"><strong>微操 1：防止孤行与寡行</strong><br>右键样式 → 段落 → 换行和分页 → 勾选「孤行控制」。确保段落首行不在页尾，末行不在页首。</div>
+              </div>
+              <div class="wb-check-item" data-check="3-2">
+                <button type="button" class="wb-check-btn" aria-label="勾选微操 2"></button>
+                <div class="wb-check-label"><strong>微操 2：段前段后间距微调</strong><br>如果标题正好在页面最上方，段前间距会失效。人工检查并微调标题 1/2 的段前段后距离，让版面透气。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="wb-done-btn" data-step-done="3" aria-label="标记步骤 03 完成" title="标记本步完成"></button>
+      </article>
+
+      <article class="wb-step rev" data-step="4">
+        <div class="wb-num">04</div>
+        <div class="wb-head">
+          <span class="wb-role human">👨‍💻 人工接管</span>
+          <h2>复杂元素：表格与图片的锚定</h2>
+          <div class="wb-body">
+            <p>表格和图片是排版崩溃的重灾区，AI 无法判断图表与正文的空间关系，必须人工介入。</p>
+            <div class="wb-checklist">
+              <div class="wb-check-item" data-check="4-1">
+                <button type="button" class="wb-check-btn" aria-label="勾选微操 1"></button>
+                <div class="wb-check-label"><strong>微操 1：表格属性设置</strong><br>选中表格 → 右键表格属性 → 文字环绕选「无」 → 行选项卡取消勾选「允许跨页断行」。</div>
+              </div>
+              <div class="wb-check-item" data-check="4-2">
+                <button type="button" class="wb-check-btn" aria-label="勾选微操 2"></button>
+                <div class="wb-check-label"><strong>微操 2：图片位置锚定</strong><br>选中图片 → 环绕文字选「嵌入型」（最不容易乱跑），或者选「四周型」后手动拖动，并在位置选项中勾选「对象随文字移动」。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="wb-done-btn" data-step-done="4" aria-label="标记步骤 04 完成" title="标记本步完成"></button>
+      </article>
+
+      <article class="wb-step rev" data-step="5">
+        <div class="wb-num">05</div>
+        <div class="wb-head">
+          <span class="wb-role both">🤝 协作验收</span>
+          <h2>收尾验证：目录生成与格式校验</h2>
+          <div class="wb-body">
+            <h4>🤖 Agent 验证</h4>
+            <div class="wb-checklist">
+              <div class="wb-check-item" data-check="5-a1">
+                <button type="button" class="wb-check-btn" aria-label="Agent 验证 1"></button>
+                <div class="wb-check-label">扫描全文档，检查是否有未套用样式的「裸文本」。</div>
+              </div>
+              <div class="wb-check-item" data-check="5-a2">
+                <button type="button" class="wb-check-btn" aria-label="Agent 验证 2"></button>
+                <div class="wb-check-label">检查标题编号是否连续无断层。</div>
+              </div>
+            </div>
+            <h4>👨‍💻 人工验收</h4>
+            <div class="wb-checklist">
+              <div class="wb-check-item" data-check="5-h1">
+                <button type="button" class="wb-check-btn" aria-label="人工验收 1"></button>
+                <div class="wb-check-label">光标放首页 → 引用 → 自动目录，确认页码无误。</div>
+              </div>
+              <div class="wb-check-item" data-check="5-h2">
+                <button type="button" class="wb-check-btn" aria-label="人工验收 2"></button>
+                <div class="wb-check-label">肉眼通读，确认无漏字、错版、错位图表。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="wb-done-btn" data-step-done="5" aria-label="标记步骤 05 完成" title="标记本步完成"></button>
+      </article>
+
+    </div>
+
+    <p class="slot-hint rev" style="margin-top:2rem">勾选状态保存在本浏览器，换设备需重新勾选。右侧大圆点 = 整步完成；清单内小圆点 = 单项微操完成。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div>&copy; 2026 Henry Lu · 卢鸿璋</div>
+    <div class="footer-links">
+      <a href="career.html">Career</a>
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="studio.html">Studio</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+</footer>
+<script src="js/site.js"></script>
+<script>
+(function () {
+  var STORAGE = 'thesis-wb-state-v1';
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(STORAGE) || '{}'); } catch (e) { state = {}; }
+
+  function save() {
+    try { localStorage.setItem(STORAGE, JSON.stringify(state)); } catch (e) {}
+    updateProgress();
+  }
+
+  function setChecked(el, on) {
+    el.classList.toggle('is-checked', on);
+    var item = el.closest('.wb-check-item');
+    if (item) item.classList.toggle('is-checked', on);
+    var step = el.closest('.wb-step');
+    if (step && step.querySelector('.wb-checklist')) syncStepDone(step);
+  }
+
+  function syncStepDone(step) {
+    var id = step.dataset.step;
+    var checks = step.querySelectorAll('.wb-check-btn');
+    if (!checks.length) return;
+    var all = Array.prototype.every.call(checks, function (b) { return b.classList.contains('is-checked'); });
+    var btn = step.querySelector('[data-step-done]');
+    if (btn) {
+      btn.classList.toggle('is-checked', all);
+      state['step-' + id] = all;
+      step.classList.toggle('is-done', all);
+    }
+  }
+
+  function updateProgress() {
+    var checks = document.querySelectorAll('.wb-check-btn, .wb-done-btn');
+    var done = 0;
+    checks.forEach(function (b) { if (b.classList.contains('is-checked')) done++; });
+    var el = document.getElementById('wb-progress');
+    if (el) el.textContent = '进度：' + done + ' / ' + checks.length + ' 项已勾选';
+  }
+
+  document.querySelectorAll('.wb-check-btn').forEach(function (btn) {
+    var item = btn.closest('.wb-check-item');
+    var key = item && item.dataset.check;
+    if (key && state[key]) setChecked(btn, true);
+    btn.addEventListener('click', function () {
+      var on = !btn.classList.contains('is-checked');
+      setChecked(btn, on);
+      if (key) state[key] = on;
+      save();
+    });
+  });
+
+  document.querySelectorAll('[data-step-done]').forEach(function (btn) {
+    var id = btn.dataset.stepDone;
+    var key = 'step-' + id;
+    if (state[key]) {
+      btn.classList.add('is-checked');
+      var step = btn.closest('.wb-step');
+      if (step) step.classList.add('is-done');
+    }
+    btn.addEventListener('click', function () {
+      var on = !btn.classList.contains('is-checked');
+      btn.classList.toggle('is-checked', on);
+      var step = btn.closest('.wb-step');
+      if (step) {
+        step.classList.toggle('is-done', on);
+        step.querySelectorAll('.wb-check-btn').forEach(function (c) {
+          setChecked(c, on);
+          var item = c.closest('.wb-check-item');
+          if (item && item.dataset.check) state[item.dataset.check] = on;
+        });
+      }
+      state[key] = on;
+      save();
+    });
+  });
+
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var pre = document.getElementById(btn.dataset.copy);
+      if (!pre) return;
+      var text = pre.textContent;
+      navigator.clipboard.writeText(text).then(function () {
+        var old = btn.textContent;
+        btn.textContent = '已复制';
+        setTimeout(function () { btn.textContent = old; }, 1600);
+      }).catch(function () {
+        btn.textContent = '请手动选中复制';
+      });
+    });
+  });
+
+  document.querySelectorAll('.wb-step').forEach(syncStepDone);
+  updateProgress();
+})();
+</script>
+</body>
+</html>

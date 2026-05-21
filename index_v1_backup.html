@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hong Zhangxiu | AI Engineer & Tech Leader</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--card:#12121a;--card-hover:#1a1a28;--accent:#6c5ce7;--accent2:#00cec9;--text:#e8e8ef;--text2:#8888a0;--border:#1e1e30}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;background:rgba(10,10,15,.92);backdrop-filter:blur(12px);z-index:100;border-bottom:1px solid var(--border);padding:0 2rem}
+nav ul{display:flex;gap:1.5rem;list-style:none;max-width:1100px;margin:0 auto;height:56px;align-items:center}
+nav a{color:var(--text2);font-size:.9rem;transition:.2s}
+nav a:hover{color:var(--accent);text-decoration:none}
+.nav-name{color:var(--text);font-weight:700;font-size:1rem;margin-right:auto}
+
+/* SECTIONS */
+section{max-width:1100px;margin:0 auto;padding:6rem 2rem 3rem}
+.section-title{font-size:1.6rem;font-weight:700;margin-bottom:.3rem}
+.section-sub{color:var(--text2);font-size:.95rem;margin-bottom:2.5rem}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-top:80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40%;left:-20%;width:140%;height:140%;background:radial-gradient(ellipse at 30% 50%,rgba(108,92,231,.12) 0%,transparent 60%),radial-gradient(ellipse at 70% 50%,rgba(0,206,201,.08) 0%,transparent 60%);pointer-events:none}
+.hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;margin-bottom:.5rem;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero .subtitle{font-size:1.15rem;color:var(--text2);margin-bottom:.4rem}
+.hero .tagline{font-size:1rem;color:var(--text2);max-width:600px;margin-bottom:2rem}
+.hero-stats{display:flex;gap:3rem;margin-bottom:2.5rem}
+.hero-stats .stat{text-align:center}
+.hero-stats .num{font-size:2rem;font-weight:800;color:var(--accent)}
+.hero-stats .label{font-size:.8rem;color:var(--text2)}
+.btn-group{display:flex;gap:1rem}
+.btn{padding:.7rem 1.8rem;border-radius:10px;font-size:.9rem;font-weight:600;cursor:pointer;border:none;transition:.25s}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#7c6ef7;text-decoration:none}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-outline:hover{border-color:var(--accent);text-decoration:none}
+
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:.3s;position:relative;overflow:hidden}
+.card:hover{background:var(--card-hover);border-color:var(--accent);transform:translateY(-4px)}
+.card-tag{display:inline-block;background:rgba(108,92,231,.15);color:var(--accent);padding:.2rem .7rem;border-radius:6px;font-size:.75rem;margin-bottom:.8rem}
+.card h3{font-size:1.15rem;margin-bottom:.5rem}
+.card p{color:var(--text2);font-size:.9rem;margin-bottom:1rem}
+.card-tech{display:flex;flex-wrap:wrap;gap:.4rem}
+.card-tech span{background:rgba(0,206,201,.1);color:var(--accent2);padding:.15rem .55rem;border-radius:5px;font-size:.75rem}
+
+/* SKILLS */
+.skill-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.skill-cat{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.8rem}
+.skill-cat h3{font-size:1rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.skill-cat h3 .icon{font-size:1.3rem}
+.skill-list{display:flex;flex-wrap:wrap;gap:.5rem}
+.skill-list span{background:rgba(108,92,231,.1);color:var(--text);padding:.3rem .8rem;border-radius:8px;font-size:.85rem;border:1px solid var(--border);transition:.2s}
+.skill-list span:hover{border-color:var(--accent);background:rgba(108,92,231,.2)}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:2rem;padding-left:1.5rem}
+.tl-item::before{content:'';position:absolute;left:-2rem;top:.5rem;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.tl-year{font-size:.8rem;color:var(--accent);font-weight:700;margin-bottom:.2rem}
+.tl-role{font-size:1.05rem;font-weight:600}
+.tl-company{color:var(--text2);font-size:.9rem;margin-bottom:.3rem}
+.tl-desc{color:var(--text2);font-size:.85rem}
+
+/* PAPER */
+.paper-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem}
+.paper-card h3{font-size:1.1rem;margin-bottom:.8rem}
+.paper-meta{color:var(--text2);font-size:.85rem;margin-bottom:1rem}
+.paper-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem;margin-top:1rem}
+.paper-result{text-align:center;padding:1rem;background:rgba(108,92,231,.08);border-radius:12px}
+.paper-result .val{font-size:1.4rem;font-weight:800;color:var(--accent2)}
+.paper-result .lbl{font-size:.75rem;color:var(--text2)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.2rem}
+.contact-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;align-items:center;gap:1rem;transition:.25s}
+.contact-item:hover{border-color:var(--accent);transform:translateY(-2px)}
+.contact-icon{font-size:1.5rem;width:44px;text-align:center}
+.contact-info .label{font-size:.75rem;color:var(--text2)}
+.contact-info .value{font-size:.95rem;font-weight:600}
+
+/* FOOTER */
+footer{text-align:center;padding:3rem 2rem;color:var(--text2);font-size:.8rem;border-top:1px solid var(--border);max-width:1100px;margin:0 auto}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav ul{gap:.8rem;font-size:.8rem}
+  .hero-stats{gap:1.5rem}
+  .hero-stats .num{font-size:1.5rem}
+  .card-grid,.skill-cats{grid-template-columns:1fr}
+  .paper-results{grid-template-columns:repeat(2,1fr)}
+  section{padding:5rem 1.2rem 2rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li class="nav-name">HZX</li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Hong Zhangxiu | 海泽</h1>
+  <p class="subtitle">AI Engineer · NLP Researcher · 12-Year Tech Leader</p>
+  <p class="tagline">从12年国企管理到AI技术深度转型——用工程化SOP思维做模型，用管理经验做决策。</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="num">12+</div><div class="label">Years Management</div></div>
+    <div class="stat"><div class="num">MSc</div><div class="label">Applied AI</div></div>
+    <div class="stat"><div class="num">4-Head</div><div class="label">ABSA Architecture</div></div>
+  </div>
+  <div class="btn-group">
+    <a href="#projects" class="btn btn-primary">View Projects</a>
+    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-title fade-in">Featured Projects | 项目展示</div>
+  <div class="section-sub fade-in">从研究到工程，用数据和代码说话。</div>
+  <div class="card-grid">
+
+    <div class="card fade-in">
+      <span class="card-tag">Thesis Research</span>
+      <h3>ABSA Dual-Task Sentiment Model</h3>
+      <p>基于RoBERTa + Time2Vec的四头双任务联合模型，覆盖产品BIO抽取、情感分类、营销BIO抽取、营销多标签分类。面向汽车用户评论的细粒度情感分析与营销策略生成。</p>
+      <div class="card-tech">
+        <span>RoBERTa</span><span>Time2Vec</span><span>CRF</span><span>PyTorch</span><span>BIO Tagging</span><span>Multi-head</span>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <span class="card-tag">Data Engineering</span>
+      <h3>Silver-Gold Annotation Pipeline</h3>
+      <p>设计并执行分层数据标注体系：2000条银标（规则+LLM辅助）+ 300条金标（人工精标）。BIO标注质量控制流程，实体密度分析，数据泄漏检测。</p>
+      <div class="card-tech">
+        <span>BIO QC</span><span>Data Leakage Check</span><span>Entity Density</span><span>Layered Training</span>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <span class="card-tag">Experiment Design</span>
+      <h3>Ablation Study Framework (Exp-A~F)</h3>
+      <p>系统化消融实验设计，验证各模块贡献：移除Time2Vec、移除CRF、冻结底层、单任务对比等。损失权重网格搜索（t2a方案），多seed复现验证。</p>
+      <div class="card-tech">
+        <span>Ablation</span><span>Multi-seed</span><span>Loss Weight Tuning</span><span>Reproducibility</span>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <span class="card-tag">Strategy Generation</span>
+      <h3>LLM-Powered Marketing Reports</h3>
+      <p>结合PELT变点检测 + 多LLM（Kimi, DeepSeek, Qwen）交叉生成营销策略报告。多模型debate机制，人工最终裁决，零幻觉优先。</p>
+      <div class="card-tech">
+        <span>PELT</span><span>Kimi</span><span>DeepSeek</span><span>Qwen</span><span>Multi-LLM Debate</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-title fade-in">Technical Skills | 技术栈</div>
+  <div class="section-sub fade-in">AI技术 + 工程化思维 + 管理经验的稀缺组合。</div>
+  <div class="skill-cats">
+    <div class="skill-cat fade-in">
+      <h3><span class="icon">🧠</span> AI &amp; Deep Learning</h3>
+      <div class="skill-list">
+        <span>PyTorch</span><span>RoBERTa Fine-tuning</span><span>NLP / ABSA</span><span>CRF</span><span>Time2Vec</span><span>Multi-head Architecture</span><span>BIO Sequence Labeling</span>
+      </div>
+    </div>
+    <div class="skill-cat fade-in">
+      <h3><span class="icon">⚙️</span> Engineering &amp; Tooling</h3>
+      <div class="skill-list">
+        <span>Python</span><span>Git</span><span>VS Code</span><span>Obsidian</span><span>GitHub Copilot</span><span>Claude Code</span><span>SOP Design</span>
+      </div>
+    </div>
+    <div class="skill-cat fade-in">
+      <h3><span class="icon">📊</span> Data &amp; Experiment</h3>
+      <div class="skill-list">
+        <span>Data Annotation QC</span><span>BIO Standard</span><span>Ablation Design</span><span>Multi-seed Validation</span><span>Hyperparameter Tuning</span><span>Reproducibility</span>
+      </div>
+    </div>
+    <div class="skill-cat fade-in">
+      <h3><span class="icon">🤝</span> Leadership &amp; Management</h3>
+      <div class="skill-list">
+        <span>12yr SOE Management</span><span>Regional GM</span><span>User Growth</span><span>Market Strategy</span><span>HR &amp; Operations</span><span>Multi-model Decision</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-title fade-in">Career Journey | 职业历程</div>
+  <div class="section-sub fade-in">从高压工程师到区域总经理，再到AI技术转型。</div>
+  <div class="timeline">
+    <div class="tl-item fade-in">
+      <div class="tl-year">2026</div>
+      <div class="tl-role">MSc Applied AI Graduate</div>
+      <div class="tl-company">Hong Kong Chu Hai College | 香港珠海学院</div>
+      <div class="tl-desc">应用人工智能硕士，研究方向：ABSA情感分析、RoBERTa双任务模型、多LLM营销策略生成。</div>
+    </div>
+    <div class="tl-item fade-in">
+      <div class="tl-year">2014 – 2025</div>
+      <div class="tl-role">Regional General Manager | 区域总经理</div>
+      <div class="tl-company">上汽通用五菱 (SGMW)</div>
+      <div class="tl-desc">12年国企管理经验，从高压工程师起步，历任多个管理岗位。负责区域市场运营、用户增长、团队管理。</div>
+    </div>
+    <div class="tl-item fade-in">
+      <div class="tl-year">Early Career</div>
+      <div class="tl-role">High-Voltage Engineer | 高压工程师</div>
+      <div class="tl-company">上汽通用五菱 (SGMW)</div>
+      <div class="tl-desc">职业生涯起点，汽车制造领域的工程技术岗位。</div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-title fade-in">Research | 研究成果</div>
+  <div class="section-sub fade-in">硕士论文：面向汽车用户评论的细粒度情感分析与营销策略研究。</div>
+  <div class="paper-card fade-in">
+    <h3>基于用户评论挖掘与跨品牌对比的智能营销策略研究</h3>
+    <p class="paper-meta">MSc Thesis · Hong Kong Chu Hai College · 2026 · Advisor: Dr. Zhu Yulin</p>
+    <p style="color:var(--text2);font-size:.9rem;margin-bottom:1rem">
+      设计四头双任务ABSA联合模型，结合PELT变点检测与多LLM策略生成，面向宝骏vs五菱跨品牌评论分析。独创Stage 0-5论文写作SOP方法论。
+    </p>
+    <div class="paper-results">
+      <div class="paper-result"><div class="val">0.549</div><div class="lbl">Product BIO Span-F1</div></div>
+      <div class="paper-result"><div class="val">0.68</div><div class="lbl">Micro-F1 (Sentiment)</div></div>
+      <div class="paper-result"><div class="val">0.579</div><div class="lbl">External Test Span-F1</div></div>
+      <div class="paper-result"><div class="val">4</div><div class="lbl">Prediction Heads</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-title fade-in">Get in Touch | 联系方式</div>
+  <div class="section-sub fade-in">Open to AI / Data / Tech Lead roles in Hong Kong.</div>
+  <div class="contact-grid">
+    <a class="contact-item fade-in" href="mailto:your-email@example.com">
+      <div class="contact-icon">📧</div>
+      <div class="contact-info"><div class="label">Email</div><div class="value">your-email@example.com</div></div>
+    </a>
+    <a class="contact-item fade-in" href="https://github.com/your-github" target="_blank">
+      <div class="contact-icon">💻</div>
+      <div class="contact-info"><div class="label">GitHub</div><div class="value">github.com/your-github</div></div>
+    </a>
+    <a class="contact-item fade-in" href="https://linkedin.com/in/your-linkedin" target="_blank">
+      <div class="contact-icon">🔗</div>
+      <div class="contact-info"><div class="label">LinkedIn</div><div class="value">linkedin.com/in/your-linkedin</div></div>
+    </a>
+    <div class="contact-item fade-in">
+      <div class="contact-icon">📍</div>
+      <div class="contact-info"><div class="label">Location</div><div class="value">Hong Kong · IANG Visa</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Hong Zhangxiu. Built with pure HTML &amp; CSS. Zero cost, zero dependency.</p>
+</footer>
+
+<script>
+// Scroll fade-in
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+},{threshold:0.15});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+// Active nav
+const sections=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id});
+  document.querySelectorAll('nav a').forEach(a=>{
+    a.style.color=a.getAttribute('href')==='#'+cur?'var(--accent)':'var(--text2)'
+  })
+});
+</script>
+</body>
+</html>

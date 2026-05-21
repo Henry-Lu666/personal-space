@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>评论数据工程说明 | Henry Lu</title>
+<meta name="description" content="硕士论文数据管线：从 2,226 条用户评论到 427 条训练样本与 47 条独立测试集；含实体密度分层与 Data-Centric 选样策略。">
+<meta property="og:title" content="评论数据工程说明 | Henry Lu">
+<meta property="og:description" content="多层降噪漏斗 + 密度/置信度内部分层，训练集可审计、可复现。">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800;900&family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@400;500;600;700&family=DM+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body data-page="studio" data-static>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">HL</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-nav="home">Home</a></li>
+      <li><a href="career.html" data-nav="career">Career</a></li>
+      <li><a href="projects.html" data-nav="projects">Projects</a></li>
+      <li><a href="research.html" data-nav="research">Research</a></li>
+      <li><a href="studio.html" data-nav="studio">Studio</a></li>
+      <li><a href="about.html" data-nav="about">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-hero page-bg-research">
+  <div class="page-hero-bg"></div>
+  <div class="container">
+    <p class="page-eyebrow">Research · Data Engineering</p>
+    <h1 class="page-title">评论数据工程说明</h1>
+    <p class="page-lead">面向方面级情感分析（ABSA）的 BIO 序列标注，对样本质量与边界正确性高度敏感。本研究采用 Data-Centric 思路：先构建可审计的降噪漏斗，再在训练集内部按实体密度与置信度分层，避免低密度样本稀释高价值标注。</p>
+    <p class="wb-back rev"><a href="studio.html">← 内容工作室</a> · <a href="research.html">研究结论摘要 →</a></p>
+    <p class="slot-hint rev" style="margin-top:.75rem">拷 U 盘 / 学校答辩请用 <a href="research-data-pipeline-ppt.html">单文件完整版</a>（样式内嵌，无需 css 文件夹）。本页需在网站环境打开。</p>
+  </div>
+</header>
+
+<!-- 逻辑主线 -->
+<section class="section-bg bg-mountain section-tight-bottom">
+  <div class="container">
+    <div class="rev">
+      <div class="sec-label">Logic</div>
+      <h2 class="sec-title">阅读顺序：一条主线，两层切分</h2>
+      <p class="sec-desc" style="margin-bottom:1rem">先看清「量从哪来、为何变少」；再理解「427 不是平铺一锅，而是入库后仍按密度再分层」。</p>
+    </div>
+    <div class="pipe-steps rev">
+      <div class="pipe-step"><div class="ps-n">①</div><div class="ps-t">语料漏斗</div><p>2,226 → 859 → 427</p></div>
+      <div class="pipe-step"><div class="ps-n">②</div><div class="ps-t">质量分层</div><p>金标 / 准金标 / 银标</p></div>
+      <div class="pipe-step"><div class="ps-n">③</div><div class="ps-t">密度切分</div><p>427 内部再分层</p></div>
+      <div class="pipe-step"><div class="ps-n">④</div><div class="ps-t">泛化验证</div><p>47 条外部测试</p></div>
+    </div>
+    <article class="feature-card wide rev" style="margin-top:1.5rem">
+      <div class="funnel-chain">
+        <div class="funnel-chip"><strong>2,226</strong><span>原始评论</span></div>
+        <span class="funnel-arrow">→</span>
+        <div class="funnel-chip"><strong>859</strong><span>银标池</span></div>
+        <span class="funnel-arrow">→</span>
+        <div class="funnel-chip"><strong>427</strong><span>训练行</span></div>
+        <span class="funnel-arrow">∥</span>
+        <div class="funnel-chip"><strong>47</strong><span>外部测试</span></div>
+      </div>
+      <p class="metric-note">语料来源：小红书 1,676 条 + 懂车帝 550 条（去重合并）。427 行对应约 247 条有效评论（by_comment 口径）：<strong>评论数相对固定，序列行数随实体跨度波动</strong>——这是 BIO 任务下的正常现象，而非数据丢失。</p>
+    </article>
+  </div>
+</section>
+
+<!-- 阶段一 -->
+<section class="section-bg bg-ocean section-tight-bottom section-tight-top">
+  <div class="container">
+    <article class="feature-card wide rev">
+      <div class="tag">Stage 1 · 降噪</div>
+      <h3>原始语料清洗与银标池构建（2,226 → 859）</h3>
+      <p>在合并去重后的双平台语料上，结合大模型辅助初标与规则过滤，剔除无实体、无有效评价的低信息样本，保留可用于方面实体与情感边界学习的评论。阶段产出为 <strong>859 条银标池（Silver Pool）</strong>，后续所有训练与测试样本均由此母池派生，并保留 JSON/CSV 级日志以便复核。</p>
+    </article>
+  </div>
+</section>
+
+<!-- 阶段二：质量分层 -->
+<section class="section-bg bg-mountain section-tight-bottom section-tight-top">
+  <div class="container">
+    <article class="feature-card wide rev">
+      <div class="tag">Stage 2 · 质量分层</div>
+      <h3>训练集构成：金标 / 准金标 / 银标（859 → 427 行）</h3>
+      <p>在银标池内按实体密度、模型置信度与人工复审结果选样，形成 427 行训练数据，而非对 859 条全量直接训练。BIO 任务中，单条错误标注即可干扰边界学习；因此采用「高质量子集 + 多样性补充」的组合策略。</p>
+      <div class="funnel-chain" style="margin:1.25rem 0">
+        <div class="funnel-chip"><strong>204</strong><span>金标 Gold</span></div>
+        <span class="funnel-arrow">+</span>
+        <div class="funnel-chip"><strong>132</strong><span>准金标</span></div>
+        <span class="funnel-arrow">+</span>
+        <div class="funnel-chip"><strong>91</strong><span>银标补充</span></div>
+        <span class="funnel-arrow">=</span>
+        <div class="funnel-chip"><strong>427</strong><span>训练行</span></div>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="table">
+          <thead>
+            <tr><th>层级</th><th>行数</th><th>选样标准（摘要）</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>金标 Gold</td><td>204</td><td>实体密度 ≥30% 或经人工确认；含 V4 遗留与第三轮复审新增</td></tr>
+            <tr><td>准金标 Quasi-Gold</td><td>132</td><td>置信度严格落在 0.7–0.9，用于边界与难例覆盖</td></tr>
+            <tr><td>银标 Silver</td><td>91</td><td>一般特征样本，抑制金标过拟合、保留跨平台多样性</td></tr>
+            <tr><td><strong>合计</strong></td><td><strong>427</strong></td><td>约 247 条评论（by_comment）；论文与评估口径一致</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 阶段二点五：密度切分 — 重点新增 -->
+<section class="section-bg bg-ocean section-tight-bottom section-tight-top">
+  <div class="container">
+    <article class="feature-card wide rev">
+      <div class="tag">Stage 2b · 密度切分</div>
+      <h3>427 之后：按实体密度与置信度的内部再分层</h3>
+      <p>427 行是<strong>主训练口径</strong>，并非训练时「一锅平铺」的全部策略。手工记录与实验设计均表明：入库后仍按<strong>密度 / 置信度</strong>做结构化安排，目的是避免低密度样本在采样与损失权重上稀释高信息样本——这与「评论数固定、行数波动」的 by_comment 组织方式一致。</p>
+      <div style="overflow-x:auto;margin-top:1.25rem">
+        <table class="table">
+          <thead>
+            <tr><th>内部分层</th><th>行数</th><th>作用（摘要）</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>密度 ≥ 30%</td><td>109</td><td>高实体覆盖，支撑核心方面与边界学习</td></tr>
+            <tr><td>密度 ≥ 18%</td><td>39</td><td>中等密度，衔接高低密度梯度</td></tr>
+            <tr><td>低密度样本</td><td>97</td><td>受控纳入，避免训练分布过于「稀疏」</td></tr>
+            <tr><td>准金标（密度视角）</td><td>163</td><td>与置信度筛选交叉，覆盖难例与边界</td></tr>
+            <tr><td>银标（密度视角）</td><td>92</td><td>多样性补充，与 Stage 2 银标口径呼应</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="metric-note" style="margin-top:1rem">注：上表为<strong>训练策略视角</strong>的分层统计，与 Stage 2 金/准金/银的<strong>来源层级</strong>互为补充；二者共同描述「先选进来，再怎么用」，而非重复计数同一概念。</p>
+      <div class="note" style="margin-top:1rem"><strong>关键表述：</strong>「评论数固定，行数波动」——同一评论在 BIO 展开后占多行，故<strong>评论条数与训练行数不必相等</strong>；对外说明样本量时，应同时交代 by_comment 与 by_row 口径，避免评委误以为「427 条评论」或「数据被悄悄删掉」。</div>
+    </article>
+  </div>
+</section>
+
+<!-- 阶段三 + V6 -->
+<section class="section-bg bg-mountain section-tight-bottom section-tight-top">
+  <div class="container">
+    <div class="card-grid studio-cards">
+      <article class="feature-card rev">
+        <div class="tag">Stage 3</div>
+        <h3>独立外部测试集（47 条）</h3>
+        <p>从未参与训练的剩余母池中，按长度（30–60 字）、非纯 O 实体、对比转折词等规则筛选候选，再经人工裁决锁定 <strong>47 条</strong> 外部测试样本，用于评估泛化而非调参。</p>
+      </article>
+      <article class="feature-card rev">
+        <div class="tag">V6 Split</div>
+        <h3>精编集切分（550 = 427 + 96 + 27）</h3>
+        <p>经漏斗得到的 V6 精编集共 550 行，按 7:2:1 划分为训练、验证与内部测试。该 550 与懂车帝<strong>原始 550 条</strong>数值相同，但来源为双平台混合精炼结果，二者不可混谈。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 业界背书 + 研究立场 -->
+<section class="section-bg bg-calm section-tight-top">
+  <div class="container">
+    <article class="feature-card wide rev">
+      <div class="sec-label">Positioning</div>
+      <h3>与业界实践的对齐（为何不是「嫌少」）</h3>
+      <div class="finding-group">
+        <h4>Data-Centric AI</h4>
+        <p>Andrew Ng 等强调的 Data-Centric 范式，核心是把迭代重心放在<strong>数据质量、标注一致性与错误分析</strong>，而非一味扩大参数量。本研究的漏斗与密度分层，属于该范式在 ABSA 场景下的具体化。</p>
+      </div>
+      <div class="finding-group">
+        <h4>大模型微调中的「策展式」数据</h4>
+        <p>OpenAI、Google、Anthropic 等在指令微调与对齐阶段，均公开强调<strong>小规模、高质、经人工与自动过滤策展</strong>的数据集；并非简单堆叠原始语料。本研究在领域评论上的 427 行训练集 + 严格外部测试，与这一思路同构，规模受任务与标注成本约束，而非偷懒删数。</p>
+      </div>
+      <div class="finding-group">
+        <h4>可审计与可复现</h4>
+        <ul>
+          <li>阶段产物有 CSV / JSON 摘要，关键切分与 论文、答辩材料数字已对齐（427 + 96 + 27 = 550；外部 47 独立）</li>
+          <li>消融实验支持「质量优先」相对「全量脏数据」的优势，见 <a href="research.html">研究结论页</a></li>
+        </ul>
+      </div>
+      <div class="finding-group">
+        <h4>与模型指标的关系</h4>
+        <p>独立测试 Span-F1 <strong>0.6705</strong>、营销标签准确度 <strong>0.68</strong>，均建立在上述管线之上。业务向的品牌对比与策略发现，见研究页「业务发现」一节。</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div>&copy; 2026 Henry Lu · 卢鸿璋</div>
+    <div class="footer-links">
+      <a href="career.html">Career</a>
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="studio.html">Studio</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+</footer>
+<script src="js/site.js"></script>
+</body>
+</html>
