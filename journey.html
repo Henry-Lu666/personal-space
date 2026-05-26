@@ -126,101 +126,113 @@
 
       <div class="journey-battle-block">
         <h4>训练这条线，实际怎么走</h4>
-        <p>从懂车帝、小红书爬用户评论，<strong class="accent-num">2,226</strong> 条原始语料一路洗到 <strong class="accent-num">427</strong> 条可训练样本——中间每一刀都有记录，不是「AI 说能训就训」。</p>
-        <p>标注质量不够时，我没有赌单一路线，而是「快筛一批、深挖一批」两轨并行：快的先补量，慢的拉高密度。这是项目经理式破局，不是熬夜堆工时。</p>
-        <p>模型分两步训：先打通用语言底子，再针对「产品评价 + 营销意图」联合微调。做了多轮消融实验，发现<strong>序列标注那一层（CRF）贡献最大</strong>——加不加它，分数差一截，这不是靠感觉，是跑出来的。</p>
-        <p>独立测试集 Span-F1 到 <strong class="accent-num">0.6705</strong>，营销标签准确度 <strong class="accent-num">0.68</strong>——427 条训练样本与 47 条外部测试分开，避免背答案；论文、答辩材料和代码里的数字对齐过，才敢写进正文。</p>
+        <p>从懂车帝、小红书爬用户评论，<strong class="accent-num">2,226</strong> 条原始语料一路洗到 <strong class="accent-num">427</strong> 条可训练样本——<strong>中间每一刀都有记录</strong>，不是「AI 说能训就训」。</p>
+        <p>标注质量不够时，我没有赌单一路线，而是<strong>「快筛一批、深挖一批」两轨并行</strong>：快的先补量，慢的拉高密度。这是项目经理式破局，不是熬夜堆工时。</p>
+        <p>模型分两步训：先打通用语言底子，再针对「产品评价 + 营销意图」联合微调。做了多轮<strong>消融实验</strong>，发现<strong>序列标注那一层（CRF）贡献最大</strong>——加不加它，分数差一截，这不是靠感觉，是跑出来的。</p>
+        <p>独立测试集 Span-F1 到 <strong class="accent-num">0.6705</strong>，营销标签准确度 <strong class="accent-num">0.68</strong>——<strong class="accent-num">427</strong> 条训练样本与 <strong class="accent-num">47</strong> 条外部测试分开，避免背答案；论文、答辩材料和代码里的数字对齐过，才敢写进正文。</p>
       </div>
 
       <div class="journey-battle-block">
         <h4>个人知识库</h4>
-        <p>用来对齐所有试验数据、脚本和各项试验的关系，方便真实论文写作的需要。后来批量化通过「论文亮点」等方法论找文献、工程化写论文，搭建坚实基础——虽是打炮打蚊子，但降维打击的方法论验证、方法迁移与灵巧链接的巧思，正是创新点的源泉，喷薄而出。</p>
+        <p>毕设文件夹不能只堆脚本和权重。<strong>我建了一套个人知识库</strong>，把每次试验的数据版本、脚本路径、指标结果串成一张地图——写第 5 章时不会忘了第 3 章用的哪个数据版，术语也不会前后打架。</p>
+        <p>后来用<strong>「论文亮点」批量找文献</strong>、工程化写章节，看起来打炮打蚊子，但这套<strong>降维打法能迁移到别的项目</strong>——方法链接找得巧，创新点自己就冒出来。</p>
       </div>
 
       <div class="journey-battle-block">
         <h4>半小时85分PPT工作流</h4>
-        <p>给直线领导汇报够用，不是发布会级别。和视频里一样，核心就四步：</p>
+        <p>给直线领导汇报够用，不是发布会级别。和视频里一样，核心就四步——完整演示见 <a href="studio.html#videos">Studio「用 AI 写 PPT」</a>（<a href="https://www.bilibili.com/video/BV17mG767EfA/" target="_blank" rel="noopener">B 站完整版 →</a>）：</p>
         <div class="journey-ppt-flow">
-          <div class="journey-ppt-step">
+          <a class="journey-ppt-step" href="https://www.douyin.com/video/7643119772166655247" target="_blank" rel="noopener">
             <div class="journey-ppt-n">STEP 1</div>
             <strong>大纲</strong>
             <span>多 AI 交叉验证</span>
-          </div>
-          <div class="journey-ppt-step">
+          </a>
+          <a class="journey-ppt-step" href="https://www.douyin.com/video/7643120455972375843" target="_blank" rel="noopener">
             <div class="journey-ppt-n">STEP 2</div>
             <strong>PPT</strong>
             <span>本地丑 → 网页好</span>
-          </div>
-          <div class="journey-ppt-step">
+          </a>
+          <a class="journey-ppt-step" href="https://www.bilibili.com/video/BV17mG767EfA/" target="_blank" rel="noopener">
             <div class="journey-ppt-n">STEP 3</div>
             <strong>评价</strong>
             <span>谁丑谁好</span>
-          </div>
-          <div class="journey-ppt-step journey-ppt-step-hot">
+          </a>
+          <a class="journey-ppt-step journey-ppt-step-hot" href="https://www.bilibili.com/video/BV17mG767EfA/" target="_blank" rel="noopener">
             <div class="journey-ppt-n">STEP 4</div>
             <strong>融合</strong>
             <span>最强模型终版</span>
-          </div>
+          </a>
         </div>
-        <p>本地 Agent 别指望一键成品；输出连断三次就换策略——答辩 PPT 改成分批生成，每批人工核对再往下走。</p>
+        <p><strong>本地 Agent 别指望一键成品</strong>；输出连断三次就换策略——答辩 PPT 改成分批生成，每批人工核对再往下走。</p>
       </div>
 
       <div class="journey-battle-block">
         <h4>论文写作工程沉淀与反思</h4>
-        <p>毕设对我不是「让 AI 写一篇论文」。我是路由器和质检员：Qwen 写段落，Kimi 专门挑刺，术语和数字口径由我锁死。写论文像管生产线——原料（数据）、工艺（训练）、质检（交叉验证）、出厂（答辩），一环不能省。</p>
+        <p>毕设对我不是「让 AI 写一篇论文」。我是<strong>路由器 + 质检员</strong>：Qwen 写段落，Kimi 专门挑刺，术语和数字口径由我锁死。写论文像管生产线——<strong>原料（数据）→ 工艺（训练）→ 质检（交叉验证）→ 出厂（答辩）</strong>，一环不能省。</p>
+        <ul class="journey-doc-links">
+          <li><a href="assets/docs/thesis-sop-methodology.md" download>论文 SOP 方法论（Stage 0–5）→</a></li>
+          <li><a href="assets/docs/thesis-writing-reflection.md" download>论文写作沉淀与反思（完整手册）→</a></li>
+          <li><a href="thesis-workbench.html">论文排版 SOP 工作台（HTML 指导）→</a></li>
+        </ul>
       </div>
 
       <div class="journey-battle-block">
         <h4>翻了什么车</h4>
-        <p>曾把 9 章丢给模型指望一次出稿，结果术语前后打架、满篇「首先其次最后」。后来改成每次只写 2–3 章，目的是把上下文控制在 90k 以内，写完人工勾选再继续。</p>
-        <p>磁盘爆满时扫描发现：<strong class="accent-num">281GB</strong> 全是中间权重文件，人写的反思和决策才 <strong class="accent-num">4.3MB</strong>。差点被 AI 清理建议误删——从此定下「砍权重、不砍心血」。</p>
+        <p>曾把 <strong>9 章丢给模型</strong>指望一次出稿，结果术语前后打架、满篇「首先其次最后」。后来改成每次只写 <strong>2–3 章</strong>，目的是把上下文控制在 <strong>90k</strong> 以内，写完人工勾选再继续。</p>
+        <p>磁盘爆满时扫描发现：<strong class="accent-num">281GB</strong> 全是中间权重文件，人写的反思和决策才 <strong class="accent-num">4.3MB</strong>。差点被 AI 清理建议误删——从此定下<strong>「砍权重、不砍心血」</strong>。</p>
+      </div>
+
+      <div class="journey-battle-block journey-case-highlight">
+        <h4>方法论实战 · 极限交付</h4>
+        <p>同一套 SOP，我辅助一位同学：极限条件下 <strong class="accent-num">3 小时</strong> 完成<strong>模型训练调优、数据梳理和论文初稿</strong>；结合论文排版 SOP 指导 HTML，<strong class="accent-num">24 小时</strong> 内交付相对质量的<strong>论文 + 答辩 PPT</strong>。</p>
+        <p class="journey-case-punch"><strong>别人一周的活，能不能在一天内保质交付</strong>——这是雇主该问的问题，也是这套方法论的回答。</p>
       </div>
 
       <blockquote class="journey-quote-inline">「先建自己能读懂的仓库地图，再让 AI 写——比多开十个聊天窗口有用。」</blockquote>
-      <p class="journey-takeaway">沉淀：做研究像做项目，诚实比漂亮数字更重要。</p>
+      <p class="journey-takeaway">沉淀：做研究像做项目，<strong>诚实比漂亮数字更重要</strong>。</p>
     </article>
 
     <article class="journey-battle journey-battle-deep rev">
       <div class="journey-battle-icon" aria-hidden="true">🛠️</div>
       <h3>个人助理与打分评委组：把协作方法平移到生活</h3>
-      <p class="journey-battle-lead">Hermes 里搭了 8 个角色、两条线：一条帮求职（找岗位→改简历→投递），一条帮做内容（写稿→分镜→成片→更新网站）。毕设里练会的「分工 + 验收」，在这里复用。</p>
+      <p class="journey-battle-lead">Hermes 里搭了 <strong class="accent-num">8</strong> 个角色、<strong>两条线</strong>：一条帮求职（找岗位→改简历→投递），一条帮做内容（写稿→分镜→成片→更新网站）。毕设里练会的「分工 + 验收」，在这里复用。</p>
       <div class="journey-battle-block">
         <h4>做了什么</h4>
-        <p>跑通首支栏目视频「用 AI 写 PPT」；个人站六页上线；飞书群自动推英语和菜谱；排查记忆系统偷偷烧最贵模型 Token 的坑。</p>
+        <p>跑通首支栏目视频<strong>「用 AI 写 PPT」</strong>；个人站<strong>六页上线</strong>；飞书群自动推英语和菜谱；排查记忆系统<strong>偷偷烧最贵模型 Token</strong> 的坑。</p>
       </div>
       <div class="journey-battle-block">
         <h4>怎么想的</h4>
-        <p>视频大纲也用交叉验证：多个 AI 各出一版 → 互相挑错 → 最强模型融合——和毕设写论文是同一套逻辑。香港家里乱、没有背景布，竖屏视频定成「大字信息卡 + 右下角小窗」，PPT 大、人像小，不跟环境硬刚。</p>
+        <p>视频大纲也用<strong>交叉验证</strong>：多个 AI 各出一版 → 互相挑错 → 最强模型融合——和毕设写论文是同一套逻辑。香港家里乱、没有背景布，竖屏视频定成<strong>「大字信息卡 + 右下角小窗」</strong>，PPT 大、人像小，不跟环境硬刚。</p>
       </div>
       <div class="journey-battle-block">
         <h4>翻了什么车</h4>
-        <p>视频合成试过屏幕直录 + 显卡加速，WSL 和 Windows 管道不通，折腾很久。最后改成浏览器录 HTML 幻灯片 + 本地 ffmpeg 合成——丑一点但能交付。TTS 配音听一遍就扔，最终用我自己重录，人味不能省。</p>
+        <p>视频合成试过屏幕直录 + 显卡加速，<strong>WSL 和 Windows 管道不通</strong>，折腾很久。最后改成浏览器录 HTML 幻灯片 + 本地 ffmpeg 合成——丑一点但能交付。TTS 配音听一遍就扔，最终<strong>用我自己重录</strong>，人味不能省。</p>
       </div>
       <blockquote class="journey-quote-inline">「做完，比用最潮的技术方案做完更重要。」</blockquote>
-      <p class="journey-takeaway">沉淀：给 AI 派活要像带团队——有物证、有节点、有预算。</p>
+      <p class="journey-takeaway">沉淀：给 AI 派活要像带团队——<strong>有物证、有节点、有预算</strong>。</p>
     </article>
 
     <div class="journey-battle-grid rev">
       <article class="journey-battle journey-battle-shallow">
         <div class="journey-battle-icon" aria-hidden="true">🌐</div>
         <h3>网站</h3>
-        <p>六页静态站 + 个人域名，从「简历复读机」改成能辩护的对外前台。</p>
+        <p><strong>六页静态站 + 个人域名</strong>，从「简历复读机」改成能辩护的对外前台。</p>
         <p><strong>坑：</strong>机器人项目必须标「方案沟通期」，过度承诺面试穿帮。</p>
-        <p class="journey-takeaway">网站是让人读进去的，不是 bullet 堆砌。</p>
+        <p class="journey-takeaway">网站是<strong>让人读进去的</strong>，不是 bullet 堆砌。</p>
       </article>
       <article class="journey-battle journey-battle-shallow">
         <div class="journey-battle-icon" aria-hidden="true">👔</div>
         <h3>求职</h3>
-        <p>五个方向并行准备，IANG 到 2028 年 7 月，简历和 Open to Work 放在首屏。</p>
+        <p><strong>五个方向并行准备</strong>，IANG 到 <strong>2028 年 7 月</strong>，简历和 Open to Work 放在首屏。</p>
         <p><strong>坑：</strong>写「每周量产 3 条视频」这种话，自己都不信。</p>
-        <p class="journey-takeaway">对外每一句话，得能在面试里展开。见 <a href="career.html">Career</a>。</p>
+        <p class="journey-takeaway">对外每一句话，<strong>得能在面试里展开</strong>。见 <a href="career.html">Career</a>。</p>
       </article>
       <article class="journey-battle journey-battle-shallow">
         <div class="journey-battle-icon" aria-hidden="true">🎬</div>
         <h3>视频</h3>
-        <p>「用 AI 写 PPT」抖音 2 段 + B 站完整版，交叉验证大纲是栏目主线。</p>
+        <p>「用 AI 写 PPT」<strong>抖音 2 段 + B 站完整版</strong>，交叉验证大纲是栏目主线。</p>
         <p><strong>坑：</strong>竖屏不能左右分屏；直录管道不通；纯 TTS 没人味。</p>
-        <p class="journey-takeaway">内容栏目要说坑，不只说好。见 <a href="studio.html">Studio</a>。</p>
+        <p class="journey-takeaway">内容栏目要<strong>说坑，不只说好</strong>。见 <a href="studio.html">Studio</a>。</p>
       </article>
     </div>
   </div>

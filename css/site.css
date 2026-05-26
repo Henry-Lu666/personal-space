@@ -111,6 +111,10 @@ body[data-page="studio"] .studio-phone-tags span{font-size:.62rem;color:var(--cy
 .journey-banner-inner{display:flex;align-items:center;justify-content:space-between;gap:1.25rem;flex-wrap:wrap}
 .journey-banner-text h3{font-size:clamp(1.35rem,2.5vw,1.75rem);color:var(--sand);margin:.35rem 0 .45rem;line-height:1.25}
 .journey-banner-text p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.65;max-width:640px}
+.journey-banner-text p strong{color:var(--gold2);font-weight:600}
+.hero-text .journey-banner-hero{margin-top:1.15rem;display:block;width:100%}
+.hero-text .journey-banner-hero .journey-banner-inner{align-items:flex-start}
+.hero-text .journey-banner-hero .journey-banner-text p{max-width:none}
 .journey-banner-arrow{color:var(--gold2);font-size:.78rem;font-family:'DM Mono',monospace;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
 .journey-about-note{margin-top:0}
 .journey-inline-link{display:inline-block;margin-top:.75rem;font-weight:600}
@@ -180,9 +184,16 @@ body[data-page="journey"] .journey-evolution-cell .tag{display:inline-block}
 body[data-page="journey"] .journey-evolution-cell p{text-align:left}
 body[data-page="journey"] .journey-evolution-sub{text-align:center}
 body[data-page="journey"] .journey-battle h3{text-align:center;color:var(--sand)}
-body[data-page="journey"] .journey-battle-block h4{text-align:center;color:var(--sand);font-family:'Noto Serif SC',serif;font-size:1rem;font-weight:600;letter-spacing:.02em}
+body[data-page="journey"] .journey-battle-shallow h3{color:var(--sand);text-align:center}
+body[data-page="journey"] .journey-model h3{color:var(--sand);text-align:center}
+body[data-page="journey"] .journey-battle-block p strong{color:var(--sand2)}
+body[data-page="journey"] .journey-case-highlight{padding:1.35rem 1.45rem;border:1px solid rgba(240,199,102,.32);border-radius:18px;background:rgba(240,199,102,.06)}
+body[data-page="journey"] .journey-case-punch{margin-top:.75rem;color:var(--sand);font-size:.92rem;line-height:1.7}
+body[data-page="journey"] .journey-doc-links{list-style:none;margin:1rem 0 0;padding:0;display:flex;flex-direction:column;gap:.55rem}
+body[data-page="journey"] .journey-doc-links a{font-size:.88rem;font-weight:600}
 body[data-page="journey"] .journey-ppt-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin-top:1rem}
-body[data-page="journey"] .journey-ppt-step{padding:1.1rem .85rem;border:1px solid var(--border);border-radius:16px;background:var(--glass);text-align:center}
+body[data-page="journey"] .journey-ppt-step{display:block;padding:1.1rem .85rem;border:1px solid var(--border);border-radius:16px;background:var(--glass);text-align:center;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s}
+body[data-page="journey"] .journey-ppt-step:hover{border-color:rgba(240,199,102,.4);transform:translateY(-2px);color:inherit}
 body[data-page="journey"] .journey-ppt-step-hot{border-color:rgba(240,199,102,.35);background:rgba(240,199,102,.06)}
 body[data-page="journey"] .journey-ppt-n{font-size:.65rem;font-family:'DM Mono',monospace;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem}
 body[data-page="journey"] .journey-ppt-step strong{display:block;font-size:1.05rem;color:var(--sand);font-family:'Noto Serif SC',serif;margin-bottom:.3rem}
