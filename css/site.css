@@ -170,6 +170,9 @@ body[data-page="journey"] .page-breadcrumb span[aria-current="page"]{color:var(-
 body[data-page="journey"] .journey-next{display:flex;flex-direction:column;gap:1.15rem;margin-top:1.5rem}
 body[data-page="journey"] .journey-next-item{padding:1.35rem 1.45rem;border:1px solid var(--border);border-radius:18px;background:var(--glass)}
 body[data-page="journey"] .journey-next-item h3{font-size:1.05rem;color:var(--sand);margin:.35rem 0 .55rem}
+body[data-page="journey"] .journey-ppt-steps{margin:1rem 0 0 1.1rem;color:var(--sand2);line-height:1.85;font-size:.88rem}
+body[data-page="journey"] .journey-ppt-steps li{margin-bottom:.45rem}
+body[data-page="journey"] .journey-ppt-steps strong{color:var(--sand)}
 body[data-page="journey"] .journey-next-item p{font-size:.88rem;color:var(--muted);line-height:1.75;margin:0}
 body[data-page="journey"] .journey-cta-section{padding-bottom:5rem}
 body[data-page="journey"] .journey-cta{justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
