@@ -12,8 +12,10 @@ desktop.ini
 # Node (in case npm used later)
 node_modules/
 
-# Backups (keep in history but not in future commits)
-# *_backup.html
+# Backups & local-only HTML
+*_backup.html
+域名访问排查指南.html
+网站维护手册.html
 
 # Temp
 *.tmp
