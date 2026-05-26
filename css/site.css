@@ -150,7 +150,8 @@ body[data-page="journey"] .journey-battle-shallow p{font-size:.84rem;margin-bott
 body[data-page="journey"] .journey-decisions{display:flex;flex-direction:column;gap:1.25rem;margin-top:1.5rem}
 body[data-page="journey"] .journey-decision{padding:1.35rem 1.45rem;border-left:3px solid var(--gold2);background:rgba(255,255,255,.03);border-radius:0 16px 16px 0}
 body[data-page="journey"] .journey-decision-num{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--cyan);margin-bottom:.35rem}
-body[data-page="journey"] .journey-decision h3{font-size:1.05rem;color:var(--sand);margin-bottom:.45rem}
+body[data-page="journey"] .journey-decision h3{font-size:1.05rem;color:var(--sand);margin-bottom:.45rem;text-align:center}
+body[data-page="journey"] .journey-next-item h3{font-size:1.05rem;color:var(--sand);margin:.35rem 0 .55rem;text-align:center}
 body[data-page="journey"] .journey-decision p{font-size:.88rem;color:var(--muted);line-height:1.75;margin:0}
 body[data-page="journey"] .journey-quote-wrap{text-align:center;max-width:760px;margin:0 auto}
 body[data-page="journey"] .journey-quote{margin:1.25rem 0 0;font-family:'Noto Serif SC',serif;font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--gold2);line-height:1.55;font-style:italic}
@@ -169,12 +170,25 @@ body[data-page="journey"] .page-breadcrumb span{color:var(--muted)}
 body[data-page="journey"] .page-breadcrumb span[aria-current="page"]{color:var(--sand3)}
 body[data-page="journey"] .journey-next{display:flex;flex-direction:column;gap:1.15rem;margin-top:1.5rem}
 body[data-page="journey"] .journey-next-item{padding:1.35rem 1.45rem;border:1px solid var(--border);border-radius:18px;background:var(--glass)}
-body[data-page="journey"] .journey-next-item h3{font-size:1.05rem;color:var(--sand);margin:.35rem 0 .55rem}
-body[data-page="journey"] .journey-ppt-steps{margin:1rem 0 0 1.1rem;color:var(--sand2);line-height:1.85;font-size:.88rem}
-body[data-page="journey"] .journey-ppt-steps li{margin-bottom:.45rem}
-body[data-page="journey"] .journey-ppt-steps strong{color:var(--sand)}
+body[data-page="journey"] .journey-opening{max-width:720px;margin-top:1rem;font-size:.92rem;line-height:1.85;color:var(--sand2)}
+body[data-page="journey"] .journey-opening .accent-num{color:var(--gold2)}
+body[data-page="journey"] .sec-label{text-align:center}
+body[data-page="journey"] .sec-title{text-align:center;max-width:none;margin-left:auto;margin-right:auto;color:var(--sand)}
+body[data-page="journey"] .sec-desc{text-align:center;margin-left:auto;margin-right:auto}
+body[data-page="journey"] .journey-evolution-cell{text-align:center}
+body[data-page="journey"] .journey-evolution-cell .tag{display:inline-block}
+body[data-page="journey"] .journey-evolution-cell p{text-align:left}
+body[data-page="journey"] .journey-evolution-sub{text-align:center}
+body[data-page="journey"] .journey-battle h3{text-align:center;color:var(--sand)}
+body[data-page="journey"] .journey-battle-block h4{text-align:center;color:var(--sand);font-family:'Noto Serif SC',serif;font-size:1rem;font-weight:600;letter-spacing:.02em}
+body[data-page="journey"] .journey-ppt-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;margin-top:1rem}
+body[data-page="journey"] .journey-ppt-step{padding:1.1rem .85rem;border:1px solid var(--border);border-radius:16px;background:var(--glass);text-align:center}
+body[data-page="journey"] .journey-ppt-step-hot{border-color:rgba(240,199,102,.35);background:rgba(240,199,102,.06)}
+body[data-page="journey"] .journey-ppt-n{font-size:.65rem;font-family:'DM Mono',monospace;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem}
+body[data-page="journey"] .journey-ppt-step strong{display:block;font-size:1.05rem;color:var(--sand);font-family:'Noto Serif SC',serif;margin-bottom:.3rem}
+body[data-page="journey"] .journey-ppt-step span{font-size:.76rem;color:var(--muted);line-height:1.5}
 body[data-page="journey"] .journey-next-item p{font-size:.88rem;color:var(--muted);line-height:1.75;margin:0}
 body[data-page="journey"] .journey-cta-section{padding-bottom:5rem}
 body[data-page="journey"] .journey-cta{justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
-@media(max-width:900px){body[data-page="journey"] .journey-stats,body[data-page="journey"] .journey-evolution,body[data-page="journey"] .journey-battle-grid,body[data-page="journey"] .journey-models,body[data-page="journey"] .journey-constraints,body[data-page="journey"] .journey-quotes-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:820px){.journey-banner-inner{flex-direction:column;align-items:flex-start}body[data-page="journey"] .journey-stats,body[data-page="journey"] .journey-evolution,body[data-page="journey"] .journey-battle-grid,body[data-page="journey"] .journey-models,body[data-page="journey"] .journey-constraints,body[data-page="journey"] .journey-quotes-grid{grid-template-columns:1fr}}
+@media(max-width:900px){body[data-page="journey"] .journey-stats,body[data-page="journey"] .journey-evolution,body[data-page="journey"] .journey-battle-grid,body[data-page="journey"] .journey-models,body[data-page="journey"] .journey-constraints,body[data-page="journey"] .journey-quotes-grid,body[data-page="journey"] .journey-ppt-flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:820px){.journey-banner-inner{flex-direction:column;align-items:flex-start}body[data-page="journey"] .journey-stats,body[data-page="journey"] .journey-evolution,body[data-page="journey"] .journey-battle-grid,body[data-page="journey"] .journey-models,body[data-page="journey"] .journey-constraints,body[data-page="journey"] .journey-quotes-grid,body[data-page="journey"] .journey-ppt-flow{grid-template-columns:1fr}}

@@ -43,6 +43,7 @@
     <p class="page-eyebrow">Three Intense Months · Field Notes</p>
     <h1 class="page-title">激情燃烧的 3 个月</h1>
     <p class="page-lead">2026.2 — 5 · 从 Vibe Coding 到个人 AI 操作系统的 90 天</p>
+    <p class="journey-opening rev">其实我一方面读研上课、主职带娃、写毕设，还全年坚持每周 5 天、每天半小时以上的高强度英语对话——一共 <strong class="accent-num">51</strong> 周，无视节假日和生病。<strong class="accent-num">51/51</strong> 周，全勤。</p>
     <div class="note journey-hero-note rev">
       <strong>核心信念：</strong>模型按背叛方式选型，不按排行榜。<br>
       <span class="journey-hero-sub">一个务实派用 AI 做毕设、建站、拍视频的真实记录，含坑量不低。</span>
@@ -78,8 +79,8 @@
         <span>论文和数据零容忍，关键数字必须自己能核对。</span>
       </div>
       <div class="journey-constraint">
-        <strong>要中文</strong>
-        <span>学术中文的微妙差别，得交给真正懂中文的模型。</span>
+        <strong>看能力</strong>
+        <span>不同模型能力边界的探索者与分享家——不迷信排行榜，实测谁在哪类任务上靠谱。</span>
       </div>
       <div class="journey-constraint">
         <strong>诚实可复现</strong>
@@ -127,24 +128,45 @@
         <h4>训练这条线，实际怎么走</h4>
         <p>从懂车帝、小红书爬用户评论，<strong class="accent-num">2,226</strong> 条原始语料一路洗到 <strong class="accent-num">427</strong> 条可训练样本——中间每一刀都有记录，不是「AI 说能训就训」。</p>
         <p>标注质量不够时，我没有赌单一路线，而是「快筛一批、深挖一批」两轨并行：快的先补量，慢的拉高密度。这是项目经理式破局，不是熬夜堆工时。</p>
-        <p>模型分两步训：先打通用语言底子，再针对「产品评价 + 营销意图」联合微调。做了多轮对照实验，发现<strong>序列标注那一层（CRF）贡献最大</strong>——加不加它，分数差一截，这不是靠感觉，是跑出来的。</p>
+        <p>模型分两步训：先打通用语言底子，再针对「产品评价 + 营销意图」联合微调。做了多轮消融实验，发现<strong>序列标注那一层（CRF）贡献最大</strong>——加不加它，分数差一截，这不是靠感觉，是跑出来的。</p>
         <p>独立测试集 Span-F1 到 <strong class="accent-num">0.6705</strong>，营销标签准确度 <strong class="accent-num">0.68</strong>——427 条训练样本与 47 条外部测试分开，避免背答案；论文、答辩材料和代码里的数字对齐过，才敢写进正文。</p>
+      </div>
+
+      <div class="journey-battle-block">
+        <h4>个人知识库</h4>
+        <p>用来对齐所有试验数据、脚本和各项试验的关系，方便真实论文写作的需要。后来批量化通过「论文亮点」等方法论找文献、工程化写论文，搭建坚实基础——虽是打炮打蚊子，但降维打击的方法论验证、方法迁移与灵巧链接的巧思，正是创新点的源泉，喷薄而出。</p>
       </div>
 
       <div class="journey-battle-block">
         <h4>半小时85分PPT工作流</h4>
         <p>给直线领导汇报够用，不是发布会级别。和视频里一样，核心就四步：</p>
-        <ol class="journey-ppt-steps">
-          <li><strong>大纲</strong> — 多 AI 交叉验证，互相挑错后再融合</li>
-          <li><strong>PPT</strong> — 本地 Agent 出稿巨丑，网页端相对能看</li>
-          <li><strong>评价</strong> — 逐页看谁家版式、逻辑、密度更好</li>
-          <li><strong>融合</strong> — 最强模型按页博取众长，出终版</li>
-        </ol>
+        <div class="journey-ppt-flow">
+          <div class="journey-ppt-step">
+            <div class="journey-ppt-n">STEP 1</div>
+            <strong>大纲</strong>
+            <span>多 AI 交叉验证</span>
+          </div>
+          <div class="journey-ppt-step">
+            <div class="journey-ppt-n">STEP 2</div>
+            <strong>PPT</strong>
+            <span>本地丑 → 网页好</span>
+          </div>
+          <div class="journey-ppt-step">
+            <div class="journey-ppt-n">STEP 3</div>
+            <strong>评价</strong>
+            <span>谁丑谁好</span>
+          </div>
+          <div class="journey-ppt-step journey-ppt-step-hot">
+            <div class="journey-ppt-n">STEP 4</div>
+            <strong>融合</strong>
+            <span>最强模型终版</span>
+          </div>
+        </div>
         <p>本地 Agent 别指望一键成品；输出连断三次就换策略——答辩 PPT 改成分批生成，每批人工核对再往下走。</p>
       </div>
 
       <div class="journey-battle-block">
-        <h4>怎么想的</h4>
+        <h4>论文写作工程沉淀与反思</h4>
         <p>毕设对我不是「让 AI 写一篇论文」。我是路由器和质检员：Qwen 写段落，Kimi 专门挑刺，术语和数字口径由我锁死。写论文像管生产线——原料（数据）、工艺（训练）、质检（交叉验证）、出厂（答辩），一环不能省。</p>
       </div>
 
