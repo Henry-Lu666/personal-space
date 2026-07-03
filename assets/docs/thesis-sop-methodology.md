@@ -3,7 +3,7 @@ title: Stage 0-5 论文写作 SOP 方法论
 created: 2026-04-25
 updated: 2026-04-25
 type: concept
-tags: [work-skills, documentation, analysis]
+tags: [career, learning]
 sources: [raw/articles/user-profile-summary-2026-04-21.md]
 confidence: high
 ---

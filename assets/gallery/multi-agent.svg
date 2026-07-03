@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <filter id="glow5">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow5soft">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="#041525"/>
+
+  <!-- Central coordinator hub -->
+  <circle cx="400" cy="300" r="50" fill="none" stroke="#d4a843" stroke-width="3" filter="url(#glow5)"/>
+  <circle cx="400" cy="300" r="40" fill="#d4a843" opacity="0.1"/>
+  <circle cx="400" cy="300" r="20" fill="#d4a843" opacity="0.3"/>
+  <circle cx="400" cy="300" r="8" fill="#d4a843" filter="url(#glow5)"/>
+
+  <!-- Spoke lines to agent nodes -->
+  <!-- Agent 1: top -->
+  <line x1="400" y1="250" x2="400" y2="120" stroke="#f0e6d0" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="400" cy="100" r="28" fill="none" stroke="#d4a843" stroke-width="2"/>
+  <circle cx="400" cy="100" r="10" fill="#d4a843" opacity="0.4"/>
+  <!-- Task icon: small bars -->
+  <rect x="392" y="92" width="5" height="16" rx="1" fill="#f0e6d0" opacity="0.6"/>
+  <rect x="400" y="96" width="5" height="12" rx="1" fill="#f0e6d0" opacity="0.5"/>
+
+  <!-- Agent 2: top-right -->
+  <line x1="435" y1="265" x2="580" y2="140" stroke="#f0e6d0" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="600" cy="120" r="28" fill="none" stroke="#d4a843" stroke-width="2"/>
+  <circle cx="600" cy="120" r="10" fill="#d4a843" opacity="0.4"/>
+  <!-- Task icon: gear -->
+  <circle cx="600" cy="120" r="6" fill="none" stroke="#f0e6d0" stroke-width="1.2" opacity="0.6"/>
+  <circle cx="600" cy="120" r="2" fill="#f0e6d0" opacity="0.5"/>
+
+  <!-- Agent 3: bottom-right -->
+  <line x1="435" y1="335" x2="580" y2="460" stroke="#f0e6d0" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="600" cy="480" r="28" fill="none" stroke="#d4a843" stroke-width="2"/>
+  <circle cx="600" cy="480" r="10" fill="#d4a843" opacity="0.4"/>
+  <!-- Task icon: triangle -->
+  <polygon points="600,472 608,486 592,486" fill="none" stroke="#f0e6d0" stroke-width="1.2" opacity="0.6"/>
+
+  <!-- Agent 4: bottom -->
+  <line x1="400" y1="350" x2="400" y2="480" stroke="#f0e6d0" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="400" cy="500" r="28" fill="none" stroke="#d4a843" stroke-width="2"/>
+  <circle cx="400" cy="500" r="10" fill="#d4a843" opacity="0.4"/>
+  <!-- Task icon: diamond -->
+  <rect x="395" y="495" width="10" height="10" rx="1" fill="none" stroke="#f0e6d0" stroke-width="1.2" opacity="0.6" transform="rotate(45,400,500)"/>
+
+  <!-- Agent 5: bottom-left -->
+  <line x1="365" y1="335" x2="220" y2="460" stroke="#f0e6d0" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="200" cy="480" r="28" fill="none" stroke="#d4a843" stroke-width="2"/>
+  <circle cx="200" cy="480" r="10" fill="#d4a843" opacity="0.4"/>
+  <!-- Task icon: circle dot -->
+  <circle cx="200" cy="480" r="5" fill="none" stroke="#f0e6d0" stroke-width="1.2" opacity="0.6"/>
+  <circle cx="200" cy="480" r="2" fill="#f0e6d0" opacity="0.5"/>
+
+  <!-- Agent 6: top-left -->
+  <line x1="365" y1="265" x2="220" y2="140" stroke="#f0e6d0" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="200" cy="120" r="28" fill="none" stroke="#d4a843" stroke-width="2"/>
+  <circle cx="200" cy="120" r="10" fill="#d4a843" opacity="0.4"/>
+  <!-- Task icon: square -->
+  <rect x="194" y="114" width="12" height="12" rx="1" fill="none" stroke="#f0e6d0" stroke-width="1.2" opacity="0.6"/>
+
+  <!-- Dashed communication lines between agents -->
+  <line x1="400" y1="128" x2="572" y2="120" stroke="#f0e6d0" stroke-width="0.8" opacity="0.25" stroke-dasharray="6,4"/>
+  <line x1="600" y1="148" x2="600" y2="452" stroke="#f0e6d0" stroke-width="0.8" opacity="0.25" stroke-dasharray="6,4"/>
+  <line x1="572" y1="480" x2="428" y2="500" stroke="#f0e6d0" stroke-width="0.8" opacity="0.25" stroke-dasharray="6,4"/>
+  <line x1="372" y1="500" x2="228" y2="480" stroke="#f0e6d0" stroke-width="0.8" opacity="0.25" stroke-dasharray="6,4"/>
+  <line x1="200" y1="452" x2="200" y2="148" stroke="#f0e6d0" stroke-width="0.8" opacity="0.25" stroke-dasharray="6,4"/>
+  <line x1="228" y1="120" x2="372" y2="100" stroke="#f0e6d0" stroke-width="0.8" opacity="0.25" stroke-dasharray="6,4"/>
+
+  <!-- Small data particles on spokes -->
+  <circle cx="400" cy="180" r="2" fill="#f0e6d0" opacity="0.5"/>
+  <circle cx="490" cy="200" r="2" fill="#d4a843" opacity="0.5"/>
+  <circle cx="490" cy="400" r="2" fill="#f0e6d0" opacity="0.5"/>
+  <circle cx="400" cy="420" r="2" fill="#d4a843" opacity="0.5"/>
+  <circle cx="310" cy="400" r="2" fill="#f0e6d0" opacity="0.5"/>
+  <circle cx="310" cy="200" r="2" fill="#d4a843" opacity="0.5"/>
+
+  <!-- Decorative -->
+  <circle cx="720" cy="300" r="2" fill="#d4a843" opacity="0.2"/>
+  <circle cx="80" cy="300" r="2" fill="#d4a843" opacity="0.2"/>
+  <circle cx="400" cy="560" r="1.5" fill="#f0e6d0" opacity="0.15"/>
+  <circle cx="400" cy="40" r="1.5" fill="#f0e6d0" opacity="0.15"/>
+</svg>

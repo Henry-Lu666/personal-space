@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <filter id="glow3">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="funnel">
+      <polygon points="250,100 550,100 500,220 300,220"/>
+    </clipPath>
+  </defs>
+  <rect width="800" height="600" fill="#041525"/>
+
+  <!-- Funnel shape -->
+  <polygon points="240,100 560,100 520,220 480,220 460,340 340,340 320,220 280,220"
+           fill="none" stroke="#d4a843" stroke-width="2.5" opacity="0.9"/>
+
+  <!-- Stage 1 (top wide) -->
+  <polygon points="240,100 560,100 520,220 280,220" fill="#d4a843" opacity="0.12"/>
+  <circle cx="400" cy="150" r="16" fill="none" stroke="#d4a843" stroke-width="2"/>
+  <circle cx="400" cy="150" r="6" fill="#d4a843" filter="url(#glow3)"/>
+
+  <!-- Stage 2 (middle) -->
+  <polygon points="280,220 520,220 480,340 320,340" fill="#d4a843" opacity="0.08"/>
+  <rect x="385" y="265" width="30" height="30" rx="4" fill="none" stroke="#d4a843" stroke-width="2" transform="rotate(45,400,280)"/>
+  <circle cx="400" cy="280" r="5" fill="#d4a843"/>
+
+  <!-- Stage 3 (bottom narrow) -->
+  <polygon points="320,340 480,340 440,460 360,460" fill="#d4a843" opacity="0.05"/>
+  <polygon points="400,370 415,400 385,400" fill="none" stroke="#d4a843" stroke-width="2"/>
+  <circle cx="400" cy="390" r="4" fill="#d4a843"/>
+
+  <!-- Connecting lines between stages -->
+  <line x1="400" y1="166" x2="400" y2="200" stroke="#f0e6d0" stroke-width="1" opacity="0.4" stroke-dasharray="4,3"/>
+  <line x1="400" y1="220" x2="400" y2="250" stroke="#f0e6d0" stroke-width="1" opacity="0.4" stroke-dasharray="4,3"/>
+  <line x1="400" y1="310" x2="400" y2="340" stroke="#f0e6d0" stroke-width="1" opacity="0.4" stroke-dasharray="4,3"/>
+
+  <!-- Flow arrows through funnel -->
+  <path d="M320,130 Q360,200 350,280 Q370,360 390,430" fill="none" stroke="#f0e6d0" stroke-width="1" opacity="0.3"/>
+  <path d="M400,110 Q400,200 400,280 Q400,360 400,430" fill="none" stroke="#f0e6d0" stroke-width="1.5" opacity="0.4"/>
+  <path d="M480,130 Q440,200 450,280 Q430,360 410,430" fill="none" stroke="#f0e6d0" stroke-width="1" opacity="0.3"/>
+
+  <!-- Small arrow tips -->
+  <polygon points="396,425 400,440 404,425" fill="#d4a843" opacity="0.7"/>
+  <polygon points="346,275 350,290 354,275" fill="#d4a843" opacity="0.4" transform="rotate(-10,350,280)"/>
+  <polygon points="446,275 450,290 454,275" fill="#d4a843" opacity="0.4" transform="rotate(10,450,280)"/>
+
+  <!-- Upward trending arrow on the right side -->
+  <line x1="620" y1="420" x2="620" y2="150" stroke="#d4a843" stroke-width="2.5" opacity="0.8"/>
+  <polygon points="610,160 620,130 630,160" fill="#d4a843" opacity="0.9"/>
+  <!-- Trend line with steps -->
+  <polyline points="600,400 610,380 620,370 630,340 640,320 650,280 660,250 670,200 680,170"
+            fill="none" stroke="#f0e6d0" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="600" cy="400" r="3" fill="#f0e6d0" opacity="0.6"/>
+  <circle cx="630" cy="340" r="3" fill="#f0e6d0" opacity="0.6"/>
+  <circle cx="660" cy="250" r="3" fill="#f0e6d0" opacity="0.6"/>
+  <circle cx="680" cy="170" r="3" fill="#d4a843" opacity="0.8"/>
+
+  <!-- Decorative -->
+  <circle cx="120" cy="500" r="2" fill="#d4a843" opacity="0.3"/>
+  <circle cx="700" cy="500" r="2" fill="#d4a843" opacity="0.3"/>
+</svg>
