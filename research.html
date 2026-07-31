@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="zh-CN">
 
@@ -9,13 +9,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>">
 
-<title>论文研究 | Henry Lu</title>
+<title>AI 落地能力 | Henry Lu</title>
 
-<meta name="description" content="Henry Lu 硕士论文：用汽车用户评论做品牌对比，帮营销团队看清口碑变化和可执行建议。">
+<meta name="description" content="Henry Lu 的 AI 落地能力：从业务问题、验证方法到可控试点，把 AI 变成可核验的工作结果。">
 
-<meta property="og:title" content="论文研究 | Henry Lu">
+<meta property="og:title" content="AI 落地能力 | Henry Lu">
 
-<meta property="og:description" content="把用户评论变成品牌对比、舆情拐点和营销建议。">
+<meta property="og:description" content="从业务问题、验证方法到可控试点，把 AI 变成可核验的工作结果。">
 
 <meta property="og:type" content="article">
 
@@ -45,17 +45,17 @@
 
     <ul class="nav-links">
 
-      <li><a href="index.html" data-nav="home">Home</a></li>
+      <li><a href="index.html" data-nav="home">首页</a></li>
 
-      <li><a href="career.html" data-nav="career">Career</a></li>
+      <li><a href="career.html" data-nav="career">职业档案</a></li>
 
-      <li><a href="projects.html" data-nav="projects">Projects</a></li>
+      <li><a href="projects.html" data-nav="projects">代表案例</a></li>
 
-      <li><a href="research.html" data-nav="research">Research</a></li>
+      <li><a href="research.html" data-nav="research">AI 落地</a></li>
 
-      <li><a href="studio.html" data-nav="studio">Studio</a></li>
+      <li><a href="studio.html" data-nav="studio">观点与内容</a></li>
 
-      <li><a href="about.html" data-nav="about">About</a></li>
+      <li><a href="about.html" data-nav="about">关于 / 联系</a></li>
 
     </ul>
 
@@ -63,15 +63,15 @@
 
 </nav>
 
-<header class="page-hero page-bg-research"><div class="page-hero-bg"></div><div class="container"><p class="page-eyebrow">Research</p><h1 class="page-title">论文研究</h1><p class="page-lead">读汽车用户评论，对比宝骏和五菱，看口碑哪里变了、活动有没有用，最后给出能落地的营销建议。</p></div></header>
+<header class="page-hero page-bg-research"><div class="page-hero-bg"></div><div class="container"><p class="page-eyebrow">Applied AI</p><h1 class="page-title">AI 落地能力</h1><p class="page-lead">先把业务问题和判断标准讲清楚，再决定 AI 能做什么、不能做什么；结果必须能被验证，也必须由人负责。</p></div></header>
 
-<section class="section-bg bg-mountain"><div class="container"><article class="feature-card wide rev"><h2 class="sec-title">倾听真实的用户声音，研究两个品牌的不同</h2><p>端到端：从抓数据到出策略，评论清洗、标注、建模、品牌对比一条龙走完。目标很简单：帮团队看清口碑，少靠感觉、多靠数据。</p><div class="res-grid" style="margin-top:1.5rem"><div class="rg"><div class="rg-v">0.6705</div><div class="rg-l">独立测试 Span-F1</div></div><div class="rg"><div class="rg-v">0.68</div><div class="rg-l">营销标签准确度</div></div><div class="rg"><div class="rg-v">427</div><div class="rg-l">人工标注样本</div></div><div class="rg"><div class="rg-v">47</div><div class="rg-l">独立测试评论条数</div></div></div><p class="metric-note">不只分「好评差评」，还会看用户在夸还是骂什么（比如空间、智驾、活动）。独立测试集和训练集分开，避免「背答案」，结果更可信。</p></article></div></section>
+<section class="section-bg bg-mountain"><div class="container"><article class="feature-card wide rev"><h2 class="sec-title">把“用户在说什么”，变成可讨论的经营判断</h2><p>ABSA 硕士研究是这页的第一项证据：我没有把评论只分成好评和差评，而是拆到具体方面，比较品牌口碑的变化，再回到营销动作和用户感知之间的关系。</p><div class="res-grid" style="margin-top:1.5rem"><div class="rg"><div class="rg-v">2,226 → 859 → 427</div><div class="rg-l">从原始评论到高质量训练样本</div></div><div class="rg"><div class="rg-v">0.21 → 0.6705</div><div class="rg-l">Span-F1 的迭代结果</div></div><div class="rg"><div class="rg-v">5</div><div class="rg-l">随机种子消融验证</div></div><div class="rg"><div class="rg-v">47</div><div class="rg-l">盲审样本</div></div></div><p class="metric-note">关键不是“模型跑出了一个分数”，而是数据、训练与盲审分开；这样结论才经得起复查。研究结果用于辅助分析和复盘，不替代经营决策。</p></article></div></section>
 
 <div class="wave"></div>
 
-<section class="section-bg bg-ocean section-tight-bottom"><div class="container"><div class="rev"><div class="sec-label">Pipeline</div><h2 class="sec-title">怎么做的（四步）</h2></div><div class="pipe-steps"><div class="pipe-step rev"><div class="ps-n">01</div><div class="ps-t">收数据</div><p>抓评论、去重、清洗</p></div><div class="pipe-step rev"><div class="ps-n">02</div><div class="ps-t">打标签</div><p>标出夸什么、骂什么、哪次活动。<a href="research-data-pipeline.html" style="color:var(--gold2);font-size:.75rem">数据漏斗详解 →</a></p></div><div class="pipe-step rev"><div class="ps-n">03</div><div class="ps-t">训模型</div><p>让模型学会读评论</p></div><div class="pipe-step rev"><div class="ps-n">04</div><div class="ps-t">出结论</div><p>找口碑拐点，写营销建议</p></div></div></div></section>
+<section class="section-bg bg-ocean section-tight-bottom"><div class="container"><div class="rev"><div class="sec-label">Method</div><h2 class="sec-title">我如何判断一个 AI 场景能不能落地</h2></div><div class="pipe-steps"><div class="pipe-step rev"><div class="ps-n">01</div><div class="ps-t">定义问题</div><p>先确认谁在什么环节需要判断，而不是先找模型。</p></div><div class="pipe-step rev"><div class="ps-n">02</div><div class="ps-t">准备证据</div><p>处理数据、标注口径与基线，让结果有可比性。</p></div><div class="pipe-step rev"><div class="ps-n">03</div><div class="ps-t">验证边界</div><p>用独立样本和重复试验，识别可用范围与失败条件。</p></div><div class="pipe-step rev"><div class="ps-n">04</div><div class="ps-t">设计试点</div><p>把 AI 放在辅助位置，保留人工复核与责任边界。</p></div></div></div></section>
 
-<section class="section-bg bg-mountain section-tight-top"><div class="container"><article class="feature-card wide rev"><h3>业务发现</h3><p class="sec-desc" style="margin-bottom:0">下面每条都是：先讲现象，再讲可能原因，最后讲可以怎么做。</p><div class="finding-group"><h4>宝骏 vs 五菱：用户嘴里差在哪</h4><ul><li><strong>宝骏</strong>：智驾、辅助驾驶、空间更容易被夸，适合打「有科技、也实用」。</li><li><strong>五菱</strong>：各维度更平均，基础口碑稳，但相对竞品故事性弱一点。</li><li><strong>差距</strong>：宝骏在智驾、辅助驾驶、空间上领先约 0.14 — 0.15（满分 1），适合做竞品对标。</li></ul></div><div class="finding-group"><h4>宝骏：技术营销确实抬了口碑</h4><ul><li><strong>现象</strong>：低端智驾相关好评率，从约 41% 升到约 66%。</li><li><strong>原因</strong>：OTA、DeepSeek 联名等活动后，好评往上走；大概晚 7 — 10 天才有明显反应。</li><li><strong>建议</strong>：技术类内容多发、早发；大促前先铺「用户感知—对外说法—落地动作」。</li></ul></div><div class="finding-group"><h4>五菱：投得多，口碑涨得慢</h4><ul><li><strong>现象</strong>：广告很猛（声量约涨 1.8 倍），但体验分只涨 0.09。</li><li><strong>原因</strong>：容易掉进「便宜但体验一般」印象，量大了也难拉开差异。</li><li><strong>建议</strong>：少只砸曝光，多讲真实场景；用产线验证、用户实拍，把痛点讲透。</li></ul></div><div class="finding-group"><h4>一句实话</h4><p>口碑拐点和大活动、发布会时间大体对得上，能帮忙复盘节奏。这套东西适合当<strong>分析参谋</strong>，不是自动替你投广告的神器。</p></div></article></div></section>
+<section class="section-bg bg-mountain section-tight-top"><div class="container"><article class="feature-card wide rev"><h3>三类可复用的落地证据</h3><p class="sec-desc" style="margin-bottom:0">它们指向同一件事：让 AI 在有边界、可验证的工作里真正帮上忙。</p><div class="finding-group"><h4>业务洞察：从评论到可讨论的品牌问题</h4><p>研究识别出宝骏与五菱在用户感知上的差异，并把口碑变化与营销节点放在同一条时间线上复盘。它提供的是分析线索，不是替代业务团队下结论。</p></div><div class="finding-group"><h4>审计报告智能校对：把规范检查做成离线 MVP</h4><p>以 Qwen3-14B 本地推理、混合检索和 7 条概念验证规则，覆盖常见审计表述规范问题的 85%。工具只给出校对建议，专业判断与最终责任始终由人承担。<a href="projects.html" style="color:var(--gold2);font-size:.85rem">查看项目说明 →</a></p></div><div class="finding-group"><h4>面向管理者的 AI 分享：先理解边界，再讨论应用</h4><p>面向非技术管理者讲解 AI 基础、数据安全、Agent 边界和模型选择；重点不是追逐工具清单，而是帮助团队判断哪些问题值得进入试点。</p></div></article></div></section>
 
 <footer>
 
@@ -81,15 +81,15 @@
 
     <div class="footer-links">
 
-      <a href="career.html">Career</a>
+      <a href="career.html">职业档案</a>
 
-      <a href="projects.html">Projects</a>
+      <a href="projects.html">代表案例</a>
 
-      <a href="research.html">Research</a>
+      <a href="research.html">AI 落地</a>
 
-      <a href="studio.html">Studio</a>
+      <a href="studio.html">观点与内容</a>
 
-      <a href="about.html">About</a>
+      <a href="about.html">关于 / 联系</a>
       <a href="journey.html">激情燃烧的 3 个月</a>
 
     </div>
@@ -103,5 +103,4 @@
 </body>
 
 </html>
-
 
