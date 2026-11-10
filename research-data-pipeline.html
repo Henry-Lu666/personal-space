@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>">
 <title>评论数据工程说明 | Henry Lu</title>
-<meta name="description" content="硕士论文数据管线：从 2,226 条用户评论到 427 条训练样本与 47 条独立测试集；含实体密度分层与 Data-Centric 选样策略。">
+<meta name="description" content="硕士论文数据管线：从 2,226 条用户评论到 427 行训练数据与 47 条独立盲评样本；含实体密度分层与 Data-Centric 选样策略。">
 <meta property="og:title" content="评论数据工程说明 | Henry Lu">
 <meta property="og:description" content="多层降噪漏斗 + 密度/置信度内部分层，训练集可审计、可复现。">
 <meta property="og:type" content="article">
@@ -13,18 +13,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800;900&family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@400;500;600;700&family=DM+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/inner-ui.css">
 </head>
-<body data-page="studio" data-static>
+<body data-page="research" data-static class="ui-refresh ui-research-data-pipeline">
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">HL</a>
     <ul class="nav-links">
-      <li><a href="index.html" data-nav="home">Home</a></li>
-      <li><a href="career.html" data-nav="career">Career</a></li>
-      <li><a href="projects.html" data-nav="projects">Projects</a></li>
-      <li><a href="research.html" data-nav="research">Research</a></li>
-      <li><a href="studio.html" data-nav="studio">Studio</a></li>
-      <li><a href="about.html" data-nav="about">About</a></li>
+      <li><a href="index.html" data-nav="home">首页</a></li>
+      <li><a href="career.html" data-nav="career">职业档案</a></li>
+      <li><a href="projects.html" data-nav="projects">代表项目</a></li>
+      <li><a href="research.html" data-nav="research">AI 实践</a></li>
+      <li><a href="studio.html" data-nav="studio">观点与内容</a></li>
+      <li><a href="about.html" data-nav="about">关于 / 联系</a></li>
     </ul>
   </div>
 </nav>
@@ -35,7 +36,7 @@
     <p class="page-eyebrow">Research · Data Engineering</p>
     <h1 class="page-title">评论数据工程说明</h1>
     <p class="page-lead">面向方面级情感分析（ABSA）的 BIO 序列标注，对样本质量与边界正确性高度敏感。本研究采用 Data-Centric 思路：先构建可审计的降噪漏斗，再在训练集内部按实体密度与置信度分层，避免低密度样本稀释高价值标注。</p>
-    <p class="wb-back rev"><a href="studio.html">← 内容工作室</a> · <a href="research.html">研究结论摘要 →</a></p>
+    <p class="wb-back rev"><a href="research.html#absa-research">← 返回汽车评论研究</a></p>
     <p class="slot-hint rev" style="margin-top:.75rem">拷 U 盘 / 学校答辩请用 <a href="research-data-pipeline-ppt.html">单文件完整版</a>（样式内嵌，无需 css 文件夹）。本页需在网站环境打开。</p>
   </div>
 </header>
@@ -46,13 +47,13 @@
     <div class="rev">
       <div class="sec-label">Logic</div>
       <h2 class="sec-title">阅读顺序：一条主线，两层切分</h2>
-      <p class="sec-desc" style="margin-bottom:1rem">先看清「量从哪来、为何变少」；再理解「427 不是平铺一锅，而是入库后仍按密度再分层」。</p>
+      <p class="sec-desc" style="margin-bottom:1rem">先看原始评论怎么变成训练数据，再看 427 行数据为什么还要按实体密度分层。</p>
     </div>
     <div class="pipe-steps rev">
       <div class="pipe-step"><div class="ps-n">①</div><div class="ps-t">语料漏斗</div><p>2,226 → 859 → 427</p></div>
       <div class="pipe-step"><div class="ps-n">②</div><div class="ps-t">质量分层</div><p>金标 / 准金标 / 银标</p></div>
       <div class="pipe-step"><div class="ps-n">③</div><div class="ps-t">密度切分</div><p>427 内部再分层</p></div>
-      <div class="pipe-step"><div class="ps-n">④</div><div class="ps-t">泛化验证</div><p>47 条外部测试</p></div>
+      <div class="pipe-step"><div class="ps-n">④</div><div class="ps-t">泛化验证</div><p>47 条独立盲评</p></div>
     </div>
     <article class="feature-card wide rev" style="margin-top:1.5rem">
       <div class="funnel-chain">
@@ -62,7 +63,7 @@
         <span class="funnel-arrow">→</span>
         <div class="funnel-chip"><strong>427</strong><span>训练行</span></div>
         <span class="funnel-arrow">∥</span>
-        <div class="funnel-chip"><strong>47</strong><span>外部测试</span></div>
+        <div class="funnel-chip"><strong>47</strong><span>独立盲评</span></div>
       </div>
       <p class="metric-note">语料来源：小红书 1,676 条 + 懂车帝 550 条（去重合并）。427 行对应约 247 条有效评论（by_comment 口径）：<strong>评论数相对固定，序列行数随实体跨度波动</strong>——这是 BIO 任务下的正常现象，而非数据丢失。</p>
     </article>
@@ -170,7 +171,7 @@
       </div>
       <div class="finding-group">
         <h4>大模型微调中的「策展式」数据</h4>
-        <p>OpenAI、Google、Anthropic 等在指令微调与对齐阶段，均公开强调<strong>小规模、高质、经人工与自动过滤策展</strong>的数据集；并非简单堆叠原始语料。本研究在领域评论上的 427 行训练集 + 严格外部测试，与这一思路同构，规模受任务与标注成本约束，而非偷懒删数。</p>
+        <p>模型需要学会识别实体边界，错标和漏标都会干扰训练。我先复查高信息样本，再用独立样本检查模型能否处理没见过的评论。</p>
       </div>
       <div class="finding-group">
         <h4>可审计与可复现</h4>
@@ -181,7 +182,7 @@
       </div>
       <div class="finding-group">
         <h4>与模型指标的关系</h4>
-        <p>独立测试 Span-F1 <strong>0.6705</strong>、营销标签准确度 <strong>0.68</strong>，均建立在上述管线之上。业务向的品牌对比与策略发现，见研究页「业务发现」一节。</p>
+        <p>研究实验 F1 为 <strong>0.6705</strong>。另用 47 条独立样本做盲评，两者采用不同口径。<a href="research.html#absa-research">返回研究与验证 →</a></p>
       </div>
     </article>
   </div>
@@ -191,11 +192,11 @@
   <div class="container footer-inner">
     <div>&copy; 2026 Henry Lu · 卢鸿璋</div>
     <div class="footer-links">
-      <a href="career.html">Career</a>
-      <a href="projects.html">Projects</a>
-      <a href="research.html">Research</a>
-      <a href="studio.html">Studio</a>
-      <a href="about.html">About</a>
+      <a href="career.html">职业档案</a>
+      <a href="projects.html">代表项目</a>
+      <a href="research.html">AI 实践</a>
+      <a href="studio.html">观点与内容</a>
+      <a href="about.html">关于 / 联系</a>
     </div>
   </div>
 </footer>

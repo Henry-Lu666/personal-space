@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 从原理到实战 | 卢鸿璋 Henry Lu</title>
+  <meta name="description" content="写给管理者的 AI 应用笔记。用报告校对理解模型、网页工具、本地处理、Agent 和模型选型，最后用一个小任务开始试。">
+  <meta property="og:title" content="AI 从原理到实战 | 卢鸿璋">
+  <meta property="og:description" content="一段报告交给 AI，哪里能省时间，哪里还得自己看？">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hongzhangxiu.xyz/ai-from-principles-to-practice.html">
+  <meta property="og:image" content="https://hongzhangxiu.xyz/assets/img/studio/ai-talk-cover.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800;900&family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@400;500;600;700&family=DM+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/inner-ui.css">
+</head>
+<body data-page="studio" data-static class="ui-refresh ui-ai-from-principles-to-practice">
+  <nav class="nav" aria-label="主导航">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="返回首页">HL</a>
+      <ul class="nav-links">
+        <li><a href="index.html" data-nav="home">首页</a></li>
+        <li><a href="career.html" data-nav="career">职业档案</a></li>
+        <li><a href="projects.html" data-nav="projects">代表项目</a></li>
+        <li><a href="research.html" data-nav="research">AI 实践</a></li>
+        <li><a href="studio.html" data-nav="studio">观点与内容</a></li>
+        <li><a href="about.html" data-nav="about">关于 / 联系</a></li>
+      </ul>
+    </div>
+  </nav>
+  <header class="page-hero page-bg-studio">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+      <p class="page-eyebrow">卢鸿璋 · 分享讲义整理</p>
+      <h1 class="page-title">AI 从原理到实战</h1>
+      <p class="page-lead">一段报告交给 AI，哪里能省时间，哪里还得自己看？从一个具体的工作任务，理解网页工具、本地模型与 Agent 各能帮什么忙。</p>
+    </div>
+  </header>
+  <main>
+    <section class="section-bg bg-calm section-tight-bottom">
+      <div class="container narrow">
+        <p class="wb-back"><a href="studio.html#ai-talk">← 返回观点与内容</a></p>
+        <h2 class="sec-title">先看它会怎么改一句话</h2>
+        <p class="sec-desc">做校对时，读起来顺和意思没变是两回事。前一件容易看见，后一件要回到原文核对。</p>
+        <div class="note">
+          <p><strong>虚构例句</strong>　验收资料尚未齐备，目前无法确认项目是否已验收。</p>
+          <p>可以请 AI 理顺句子。如果它改成「项目未验收」，就替原文下了结论。资料没齐，只说明目前无法确认。</p>
+        </div>
+      </div>
+    </section>
+    <section class="section-bg bg-ocean section-tight-top">
+      <div class="container narrow">
+        <h2 class="sec-title" style="margin-bottom:1.6rem">从会回答，到能帮忙做事</h2>
+        <div class="timeline">
+          <article class="tl-item">
+            <div class="tl-period">模型原理</div>
+            <h3>为什么答得流畅，仍可能答错？</h3>
+            <p class="tl-desc">模型把文字拆成词块，参考上下文逐步生成内容。它能写出连贯的解释，也可能补出材料里没有的事实。关键数字、出处和结论，都要回到依据核对。</p>
+          </article>
+          <article class="tl-item">
+            <div class="tl-period">网页工具</div>
+            <h3>先拿一项容易验收的任务试</h3>
+            <p class="tl-desc">用公开材料或虚构样本，请 AI 整理提纲、改写一句话、提取待办。给它原文和明确要求，例如「只改表述，有疑问就标出来」。</p>
+          </article>
+          <article class="tl-item">
+            <div class="tl-period">本地处理</div>
+            <h3>报告需要留在本机，就检查整条流程</h3>
+            <p class="tl-desc">除了模型在哪运行，还要看附件、检索、日志和调用经过哪里。我的离线校对原型先跑规则和本地检索，再给出建议，最后由审阅人逐条决定是否采纳。</p>
+          </article>
+          <article class="tl-item">
+            <div class="tl-period">Agent</div>
+            <h3>让它动手之前，先给它系安全带</h3>
+            <p class="tl-desc">可以让它串起读文件、查参照、生成建议几步。先说清能读哪些文件、能改什么、失败后在哪里停。改原稿、发送或提交之前，留一步人工确认。</p>
+          </article>
+          <article class="tl-item">
+            <div class="tl-period">模型选型</div>
+            <h3>用同一批样本，看谁更适合这份活</h3>
+            <p class="tl-desc">拿同一批样本试不同方案。看它漏了什么、改错了什么、复核要花多久，再一起算速度和成本。最值得选的，是能在这项任务里稳定交出可检查结果的方案。</p>
+          </article>
+        </div>
+        <div class="note">
+          <strong>明天就能试</strong>　挑一项重复工作，找几条可用的样本，先定什么算做对，再请同事一起复核一轮。
+        </div>
+        <div class="hero-cta" style="margin-top:1.5rem">
+          <a class="btn btn-primary" href="projects.html#audit">看离线校对原型</a>
+          <a class="btn btn-ghost" href="studio.html#videos">看 PPT 实操视频</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container footer-inner">
+      <p>&copy; 2026 Henry Lu · 卢鸿璋</p>
+      <div class="footer-links">
+        <a href="studio.html#ai-talk">返回观点与内容</a>
+        <a href="about.html#contact">联系我</a>
+      </div>
+    </div>
+  </footer>
+  <script src="js/site.js"></script>
+</body>
+</html>

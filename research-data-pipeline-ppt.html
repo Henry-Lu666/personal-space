@@ -13,7 +13,7 @@
 <meta property="og:image" content="https://hongzhangxiu.xyz/assets/img/photo_ocean.jpg">
 <!-- 单文件：无外部 css/js，拷到学校电脑/U盘即可。样式全部在下面 <style> 里 -->
 <style>
-:root{--deep:#03111d;--sand:#f7efd8;--sand2:#e6d9bb;--muted:#aa9d82;--gold:#f0c766;--cyan:#57d7d1;--border:rgba(240,199,102,.18)}
+:root{--deep:#071522;--sand:#f5eedf;--sand2:#dce6e8;--muted:#bacbd1;--gold:#efca83;--cyan:#94d7d1;--border:#a7bbc130}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--deep);color:var(--sand2);line-height:1.72;font-size:15px}
@@ -60,9 +60,19 @@ code{font-family:Consolas,"Courier New",monospace;font-size:.78rem;color:var(--c
 .foot{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.74rem;color:var(--muted);text-align:center}
 @media print{body{background:#fff;color:#111}.wrap{max-width:100%}h1,h2{color:#111}.card{border-color:#ccc}}
 @media(max-width:640px){.wrap{padding:20px 18px 40px}.flow4,.split2{grid-template-columns:1fr}}
+
+/* Offline edition: self-contained reading layout. */
+.wrap{max-width:1000px;padding:44px 40px 64px}.hero{padding:30px 0}h1{font-family:Georgia,'Microsoft YaHei',serif;font-size:38px;line-height:1.4}h2{font-size:24px;line-height:1.5;margin-top:48px;padding-bottom:16px}h3{font-size:19px}p,li{font-size:15px;line-height:1.9}.card{padding:24px;border-radius:10px;margin:18px 0;background:#071d2b}.howto{border:1px solid var(--border);border-radius:10px;padding:20px}.funnel{gap:12px;margin:24px 0}.chip{padding:16px}.chip b{font-size:28px}.chip span{font-size:12px}.flow4{gap:14px}.flow4 .s{padding:20px 12px}.flow4 span{font-size:12px}.split2{gap:20px}table{font-size:14px}th,td{padding:12px}code{overflow-wrap:anywhere}.qa{padding:20px;margin:18px 0}.qa .q{font-size:16px}.check li{font-size:14px;padding-block:10px}
+@media(max-width:640px){.wrap{padding:24px 22px 40px}h1{font-size:29px}h2{font-size:23px;margin-top:32px}.card{padding:20px}p,li{font-size:14px}.flow4{grid-template-columns:1fr 1fr}.funnel{gap:8px}.chip{padding:12px}.chip b{font-size:23px}table{display:block;overflow-x:auto;max-width:100%}.howto{padding:18px}.howto code{word-break:break-all}.split2{grid-template-columns:1fr}}
+@media print{body{background:white;color:#111}.card,.howto,.qa{background:white;border-color:#bbb}p,li,td,h3,h4,.lead,.qa .q{color:#222}.wrap{padding:0}h2{break-after:avoid}.card{break-inside:avoid}}
+
+@media screen {
+  .card, .flow4 .s { background: #132b3a; }
+  .hero { border-bottom-color: #efca8370; }
+}
 </style>
 </head>
-<body>
+<body class="ui-refresh ui-research-data-pipeline-ppt">
 <div class="wrap">
 
 <div class="howto">
@@ -78,17 +88,17 @@ code{font-family:Consolas,"Courier New",monospace;font-size:.78rem;color:var(--c
 <div class="hero">
   <p class="eyebrow">Research · Data Engineering · Defense</p>
   <h1>评论数据工程说明</h1>
-  <p class="lead">面向方面级情感分析（ABSA）的 BIO 序列标注。Data-Centric 思路：2,226 条双平台原始评论 → 859 银标池 → 427 训练行 + 47 独立外部测试；427 入库后按<strong>实体密度 / 置信度</strong>再分层。与论文、答辩材料数字一致，全链条可审计。</p>
+  <p class="lead">面向方面级情感分析（ABSA）的 BIO 序列标注。Data-Centric 思路：2,226 条双平台原始评论 → 859 银标池 → 427 行训练数据 + 47 条独立盲评样本；427 入库后按<strong>实体密度 / 置信度</strong>再分层。与论文、答辩材料数字一致，全链条可审计。</p>
 </div>
 
 <h2>答辩速答（可先背）</h2>
 <div class="card ok">
   <strong>15 秒核心版</strong><br>
-  我们不是把数据越做越少，而是用多层降噪漏斗，把 2,226 条原始评论提纯成 859 条银标池，再筛成 427 条高信噪比训练样本；同时保留 47 条独立外部测试集，保证质量、泛化与可审计性。
+  先对 2,226 条原始评论清洗和筛选，得到 859 条标注记录，再选出 427 行训练数据。另留 47 条独立样本做盲评，检查模型能否处理没见过的评论。
 </div>
 <div class="card">
   <strong>45 秒展开版</strong><br>
-  流程核心是质量优先。BIO 对边界和实体敏感，所以先双平台降噪，再金标、准金标、银标三层选样。427 条训练集配合 47 条外部测试，既能训模型，也能客观验证泛化。427 之后还按密度再分层，避免低密度样本冲淡高价值标注——手工记录里叫「<strong>评论数固定，行数波动</strong>」。
+  流程核心是质量优先。BIO 对边界和实体敏感，所以先双平台降噪，再金标、准金标、银标三层选样。427 行用于训练，47 条独立样本用于检查泛化。427 之后还按密度再分层，避免低密度样本冲淡高价值标注——手工记录里叫「<strong>评论数固定，行数波动</strong>」。
 </div>
 <div class="card warn">
   <strong>若被问「是不是数据太少」</strong>：先立住——「BIO 更看重样本质量与边界正确性，不是简单堆数量。」再给漏斗数字与消融实验。
@@ -133,7 +143,7 @@ code{font-family:Consolas,"Courier New",monospace;font-size:.78rem;color:var(--c
   <tr><td><strong>合计</strong></td><td><strong>427</strong></td><td colspan="2">约 247 条评论（by_comment）；论文与评估口径一致</td></tr>
 </table>
 <div class="card ok">
-  <strong>质量优先</strong>：宁可 427 条高信噪比，不要 3000 条半吊子标注。Google、OpenAI、Anthropic 等在指令微调阶段均强调<strong>小规模、高质、经策展</strong>的数据，而非堆叠原始语料。
+  <strong>质量优先</strong>：标注边界错了，样本再多也可能教错模型。这次优先复查实体密度高、信息更完整的样本。
 </div>
 
 <h2>Stage 2b · 密度切分（427 内部再分层）</h2>
@@ -176,14 +186,14 @@ code{font-family:Consolas,"Courier New",monospace;font-size:.78rem;color:var(--c
 <h2>论文 vs 答辩 PPT · 数字一致性</h2>
 <table>
   <tr><th>关键表述</th><th>论文</th><th>答辩 PPT</th><th>可追溯文件</th></tr>
-  <tr><td>主声明</td><td>427 训练 + 47 外部测试</td><td>同左</td><td><code>stage2_train_by_comment_v6.csv</code></td></tr>
+  <tr><td>数据口径</td><td>427 行训练数据，47 条独立盲评样本</td><td>同左</td><td><code>stage2_<wbr>train_<wbr>by_<wbr>comment_<wbr>v6.csv</code></td></tr>
   <tr><td>V6 切分</td><td>550 = 427+96+27</td><td>数据表</td><td>427+96+27 = 550 ✓</td></tr>
   <tr><td>局限</td><td>—</td><td>样本量较小等</td><td>学术诚实</td></tr>
 </table>
 
 <h2>标准答辩问答</h2>
 <div class="qa"><p class="q">Q1：为什么 2,000+ 最后只用 427？数据有问题吗？</p>
-<p><strong>A：</strong>原始语料 2,200+ 很扎实；BIO 对质量敏感，我们设计了自动化多层降噪与大模型辅评，提纯出 427 条高信噪比训练集，含跨平台特征。消融表明质量优先优于数千条脏数据导致的过拟合。</p></div>
+<p><strong>A：</strong>原始语料 2,200+ 很扎实；BIO 对质量敏感，我们设计了自动化多层降噪与大模型辅评，提纯出 427 行训练数据，含跨平台特征。消融表明质量优先优于数千条脏数据导致的过拟合。</p></div>
 <div class="qa"><p class="q">Q2：为什么懂车帝 550 和 V6 也是 550？</p>
 <p><strong>A：</strong>初始 550 是单平台（懂车帝）原始语料；V6 的 550 是从 2,226 条双平台混合语料经过去重、标注、置信度过滤后精炼的精编集。数字相同、来源与质量完全不同，体现精炼过程有效，并非只用懂车帝或浪费小红书。</p></div>
 <div class="qa"><p class="q">Q3：47 条外部测试怎么来的？</p>
@@ -211,15 +221,15 @@ code{font-family:Consolas,"Courier New",monospace;font-size:.78rem;color:var(--c
 <p>OpenAI、Google、Anthropic 在指令微调与对齐阶段，均公开强调小规模、高质、经人工与自动过滤策展的数据集。</p>
 <h4>本研究指标（建立在上述管线之上）</h4>
 <ul>
-  <li>独立测试 Span-F1：<strong>0.6705</strong></li>
+  <li>研究实验 F1：<strong>0.6705</strong>（另做 47 条独立样本盲评）</li>
   <li>营销标签准确度：<strong>0.68</strong></li>
   <li>业务发现：宝骏 vs 五菱品牌对比、舆情拐点与营销建议（见论文正文）</li>
 </ul>
 
 <h2>答辩现场可展示的核心文件</h2>
 <ul>
-  <li><code>stage2_train_by_comment_v6.csv</code> — 427 行训练集（最关键）</li>
-  <li><code>external_test_build_summary.json</code> — 47 条外部测试构建说明</li>
+  <li><code>stage2_<wbr>train_<wbr>by_<wbr>comment_<wbr>v6.csv</code>：427 行训练数据</li>
+  <li><code>external_<wbr>test_<wbr>build_<wbr>summary.json</code>：47 条独立盲评样本的构建说明</li>
   <li><code>数据集的变迁.xlsx</code> — 手工记录总链路，解释漏斗最直观</li>
 </ul>
 

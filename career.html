@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>">
-  <title>职业档案 | Henry Lu</title>
-  <meta name="description" content="Henry Lu 职业档案：12 年新能源汽车管理、区域运营、团队扩张、AI 转型与香港 IANG 求职定位。">
-  <meta property="og:title" content="职业档案 | Henry Lu">
-  <meta property="og:description" content="目前在看机会: 业务营运管理 / 数字化转型 / AI 落地应用。">
+  <title>职业档案 | 卢鸿璋 Henry Lu</title>
+  <meta name="description" content="卢鸿璋的职业经历：上汽通用五菱产品工程、区域经销商、直营门店与总部经营支持，香港珠海学院应用人工智能硕士。">
+  <meta property="og:title" content="职业档案 | 卢鸿璋 Henry Lu">
+  <meta property="og:description" content="从汽车研发走到经销商、直营店和总部经营支持，再把业务经验带进 AI 原型。">
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://hongzhangxiu.xyz/career.html">
   <meta property="og:image" content="https://hongzhangxiu.xyz/assets/img/photo_ocean.jpg">
@@ -19,17 +19,19 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;800;900&family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@400;500;600;700&family=DM+Mono&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/career.css">
+<link rel="stylesheet" href="css/inner-ui.css">
 </head>
 
-<body data-page="career">
+<body data-page="career" class="ui-refresh ui-career">
   <nav class="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">HL</a>
       <ul class="nav-links">
         <li><a href="index.html" data-nav="home">首页</a></li>
-        <li><a href="career.html" data-nav="career">职业档案</a></li>
-        <li><a href="projects.html" data-nav="projects">代表案例</a></li>
-        <li><a href="research.html" data-nav="research">AI 落地</a></li>
+        <li><a href="career.html" data-nav="career" aria-current="page">职业档案</a></li>
+        <li><a href="projects.html" data-nav="projects">代表项目</a></li>
+        <li><a href="research.html" data-nav="research">AI 实践</a></li>
         <li><a href="studio.html" data-nav="studio">观点与内容</a></li>
         <li><a href="about.html" data-nav="about">关于 / 联系</a></li>
       </ul>
@@ -37,101 +39,118 @@
   </nav>
   <header class="page-hero page-bg-career">
     <div class="page-hero-bg"></div>
-    <div class="container">
-      <p class="page-eyebrow">Career · 看机会中</p>
-      <h1 class="page-title">职业档案</h1>
-      <p class="page-lead">寻求业务营运管理、数字化转型或 AI 落地应用岗位。12 年一线经营与组织经验，能够把问题拆清楚、组织资源推进，并用数据验证结果。</p>
-      <div class="identity-row"><span class="pill cyan">香港湾仔 · IANG 有效至 2028 年 7 月</span></div>
+    <div class="container career-hero">
+      <div class="career-intro">
+        <p class="page-eyebrow">卢鸿璋 · Henry Lu</p>
+        <h1 class="page-title">职业档案</h1>
+        <p class="page-lead">在五菱，我管过门店，也做过总部经营分析。后来，我亲手做了<a href="projects.html#audit">离线 AI 校对原型</a>。</p>
+        <dl class="career-directions">
+          <dt>求职方向</dt>
+          <dd>经营分析与商业运营 / AI 应用与业务分析</dd>
+        </dl>
+        <div class="identity-row"><span class="pill cyan">香港湾仔 · IANG 工作许可，无需雇主担保</span></div>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="index.html#resumes">选择简历版本</a>
+          <a class="btn btn-ghost" href="about.html#contact">联系我</a>
+        </div>
+      </div>
+      <aside class="career-proof" aria-labelledby="career-proof-title">
+        <h2 id="career-proof-title">先看三项结果</h2>
+        <img class="story-sketch" src="assets/img/projects/matrix-operations-sketch.webp" width="1440" height="480" alt="">
+        <ul>
+          <li>
+            <a href="projects.html#foshan">
+              <span class="career-proof-value">亏损逐月收窄</span>
+              <span>接管佛山直营店后，2024 年 7 月接近盈亏平衡。</span>
+            </a>
+          </li>
+          <li>
+            <a href="projects.html#dealer">
+              <span class="career-proof-value">从大区末端进前三</span>
+              <span>邢台一家经销商，按实销目标完成率排名，历时 3 个月。</span>
+            </a>
+          </li>
+          <li>
+            <a href="projects.html#absa">
+              <span class="career-proof-value">0.21 → 0.6705</span>
+              <span>汽车评论研究的实验 F1，另完成 47 条独立样本盲评。</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
     </div>
   </header>
-  <section class="section-bg bg-office">
-    <div class="container">
-      <div class="card-grid career-intro-grid">
-        <article class="feature-card wide rev">
-          <div class="tag"><span class="open-dot"></span>目前在看机会</div>
-          <h2 class="sec-title">业务操盘 × AI 落地</h2>
-          <div class="career-summary">
-            <p><strong>方向</strong>：业务营运管理 / 数字化转型 / AI 落地应用</p>
-            <p><strong>经营与组织</strong>：做过亏损门店扭亏、全国直营团队扩张，以及岗位、绩效、晋升双通道与薪酬分润设计；能把战略意图、行业与用户洞察推进到一线执行</p>
-            <p><strong>AI 实践</strong>：完成过从数据准备、验证到业务解释的 AI 项目</p>
-            <p><strong>协作方式</strong>：既能和技术团队厘清实施条件，也能向管理层说明业务目标、行业判断、风险边界和推进路径</p>
-          </div>
-          <div class="hero-cta" style="margin-top:1.4rem"><a class="btn btn-primary"
-              href="assets/docs/卢鸿璋的简历_2026.V4.pdf" download>下载简历 PDF</a><a class="btn btn-ghost"
-              href="about.html">关于我</a></div>
-        </article>
-      </div>
-    </div>
-  </section>
-  <div class="wave"></div>
-  <section class="section-bg bg-ocean">
-    <div class="container">
-      <div class="rev">
-        <div class="sec-label">Career Timeline</div>
-        <h2 class="sec-title">从工程现场到经营现场，再到 AI 现场</h2>
-      </div>
-      <div class="timeline">
-        <div class="tl-item rev">
-          <div class="tl-period">2025.09 — 2026.06</div>
-          <h3>MSc Applied Artificial Intelligence</h3>
-          <div class="tl-org">香港珠海学院</div>
-          <div class="tl-desc">论文聚焦汽车评论 ABSA、跨品牌对比与智能营销策略生成。</div>
+  <main>
+    <section class="section-bg bg-ocean career-experience" id="experience">
+      <div class="container">
+        <div class="rev">
+          <div class="sec-label">上汽通用五菱</div>
+          <h2 class="sec-title">从一线到总部，再回到现场</h2>
         </div>
-        <div class="tl-item rev">
-          <div class="tl-period">2024.08 — 2025.03</div>
-          <h3>智能移动机器人营销项目（To B）</h3>
-          <div class="tl-org">上汽通用五菱</div>
-          <div class="tl-desc">新业务探索期，敲定产品定位、定制解决方案、搭建销售管道；独立开发 3 家高价值潜在客户进入方案沟通阶段，摸排 20+ 线索企业。</div>
-        </div>
-        <div class="tl-item rev">
-          <div class="tl-period">2023.09 — 2024.08</div>
-          <h3>佛山直营店总经理</h3>
-          <div class="tl-org">上汽通用五菱</div>
-          <div class="tl-desc">接手亏损直营店，完成 13 → 7 人团队重组且零劳务纠纷，人效提升 85%，实销与盈利成为体系内标杆。</div>
-        </div>
-        <div class="tl-item rev">
-          <div class="tl-period">2022.01 — 2023.09</div>
-          <h3>运营及人才发展官</h3>
-          <div class="tl-org">上汽通用五菱 · 650+ 人</div>
-          <div class="tl-desc">全国直营体系运营支持，2 个月内团队 300 → 650+，搭建培训和晋升体系。</div>
-        </div>
-        <div class="tl-item rev">
-          <div class="tl-period">2014.08 — 2021.12</div>
-          <h3>高压工程师 · 用户运营 · 新零售</h3>
-          <div class="tl-org">上汽通用五菱</div>
-          <div class="tl-desc">1 项个人专利，5 项行业标准。15,000+ 条用户真实反馈，沉淀 3,000+ 产品提升点。带队突破单月单城 6,000 台交付纪录（≈¥2.4 亿 GMV）。</div>
+        <div class="timeline">
+          <article class="tl-item rev">
+            <div class="tl-period">2024.08 至 2025.03</div>
+            <h3>智能移动机器人新业务</h3>
+            <p class="tl-desc">把技术样机写成客户能看懂的应用方案，开发 3 家高价值潜在客户，摸排 20 多家企业线索。与财务逐项核对材料、研发、软件和外包成本，参与报价与可行性测算。</p>
+          </article>
+          <article class="tl-item rev">
+            <div class="tl-period">2023.09 至 2024.08</div>
+            <h3>佛山直营店总经理</h3>
+            <p class="tl-desc">负责门店损益与日常经营。与财务一起拆成本，调整岗位、库存及销售和售后分工。</p>
+            <a href="projects.html#foshan">看佛山门店项目 →</a>
+          </article>
+          <article class="tl-item rev">
+            <div class="tl-period">2022.01 至 2023.09</div>
+            <h3>全国直营体系运营与人才发展</h3>
+            <p class="tl-desc">牵头梳理部门与岗位职责，和人力资源、财务团队一起制定人员配置标准。组织 4 次合伙人级培训，并在集团已有平台安排课程、跟进学习与考试。</p>
+          </article>
+          <article class="tl-item rev">
+            <div class="tl-period">约 2021.06 至 2021.12</div>
+            <h3>苏州直营筹建与运营</h3>
+            <p class="tl-desc">先落成交付与运营中心，再逐步开出商超快闪、接入售后服务。协调场地与门店执行，整体落地约 4 至 5 个月。</p>
+          </article>
+          <article class="tl-item rev">
+            <div class="tl-period">2021.01 至 2021.05</div>
+            <h3>总部经营支持</h3>
+            <p class="tl-desc">在已有 CRM 上建立经营报表，统一门店录入和异常跟踪，供滚动计划和复盘使用。</p>
+            <a href="projects.html#report">看经营报表项目 →</a>
+          </article>
+          <article class="tl-item rev">
+            <div class="tl-period">2014 至 2020</div>
+            <h3>产品工程、用户运营与区域经销商经营</h3>
+            <p class="tl-desc">早期做 DC/DC 产品工程，和供应商一起推进设计、工艺质量与装车验证。转入用户运营后，8 个月收集 15,000 多条反馈。随后先后负责闽浙和河北两批经销商，和门店一起做活动、跟成交。</p>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
-  <div class="wave"></div>
-  <section class="section-bg bg-calm">
-    <div class="container">
-      <div class="rev">
-        <div class="sec-label">Role Fit</div>
-        <h2 class="sec-title">岗位匹配</h2>
-        <p class="sec-desc">以经营结果为起点，用组织能力和可验证的 AI 方法推动落地。</p>
+    </section>
+    <div class="wave"></div>
+    <section class="section-bg bg-calm">
+      <div class="container">
+        <div class="card-grid career-intro-grid">
+          <article class="feature-card wide rev">
+            <h2 class="sec-title">教育与语言</h2>
+            <div class="career-summary">
+              <p><strong>2026 年，香港珠海学院</strong> · 应用人工智能硕士。<a href="projects.html#absa">看汽车评论研究 →</a></p>
+              <p><strong>2013 年，广西大学</strong> · 交通运输本科（车辆工程方向）。</p>
+              <ul class="career-languages" aria-label="语言能力">
+                <li><strong>普通话（母语）</strong>：有活动主持经验，撰写过行业报告及部门汇报材料。</li>
+                <li><strong>英语</strong>：工作读写、日常交流，可在会议中作有准备的汇报。</li>
+                <li><strong>粤语</strong>：持续提升中，目前可日常听说沟通。</li>
+              </ul>
+            </div>
+          </article>
+        </div>
       </div>
-      <div class="card-grid">
-        <article class="feature-card rev"><div class="tag">Business Operations</div><h3>经营问题与结果</h3><p>做过门店扭亏、销售运营与用户运营；能从问题、动作到结果建立清晰的复盘链路。</p></article>
-        <article class="feature-card rev"><div class="tag">Organisation</div><h3>组织搭建与带队</h3><p>全国直营体系扩张期，2 个月将团队由 300 人扩至 650+ 人，并建立培训与晋升机制。</p></article>
-        <article class="feature-card rev"><div class="tag">Applied AI</div><h3>场景判断与验证</h3><p>完成 ABSA 数据管线与五随机种子验证；能把业务假设转成可测试、可复查的 AI 试点。</p></article>
-        <article class="feature-card rev"><div class="tag">Delivery Boundary</div><h3>实施与责任边界</h3><p>理解数据安全、人工复核和规则校验的重要性；AI 负责辅助，专业判断与责任仍由人承担。</p></article>
-        <article class="feature-card rev"><div class="tag">语言</div><h3>普通话 · 英语 · 粤语（学习）</h3><p>普通话母语，12年国企商务沟通与汇报经验。英语硕士论文全英文写作，技术文档与商务邮件读写无障碍，日常对话可沟通。粤语能听懂日常交流，口语持续练习中。</p></article>
-        <article class="feature-card rev"><div class="tag">Work Authorization</div><h3>香港 IANG</h3><p>现居香港湾仔，IANG 有效至 2028 年 7 月，寻求长期在港发展机会。</p></article>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
   <footer>
     <div class="container footer-inner">
       <div>&copy; 2026 Henry Lu · 卢鸿璋</div>
       <div class="footer-links">
-        <a href="career.html">职业档案</a>
-        <a href="projects.html">代表案例</a>
-        <a href="research.html">AI 落地</a>
-        <a href="studio.html">观点与内容</a>
-        <a href="about.html">关于 / 联系</a>
-      <a href="journey.html">激情燃烧的 3 个月</a>
+        <a href="index.html#resumes">下载简历</a>
+        <a href="projects.html">代表项目</a>
+        <a href="research.html">AI 实践</a>
+        <a href="about.html#contact">联系方式</a>
       </div>
     </div>
   </footer>

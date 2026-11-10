@@ -1,0 +1,134 @@
+.page-bg-career {
+  min-height: 0;
+}
+
+.page-hero .career-hero {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: center;
+  padding-block: clamp(3rem, 6vw, 5rem) 3.5rem;
+}
+
+.career-intro .page-lead {
+  max-width: 34rem;
+  margin-bottom: 1.15rem;
+}
+
+.career-directions {
+  margin: 0 0 .8rem;
+}
+
+.career-directions dt {
+  color: var(--sand3);
+  font-size: .78rem;
+}
+
+.career-directions dd {
+  color: var(--sand);
+  font-size: .94rem;
+  font-weight: 600;
+}
+
+.career-intro .identity-row {
+  margin-bottom: 1.2rem;
+}
+
+.career-intro .hero-cta {
+  margin-bottom: 0;
+}
+
+.career-proof {
+  padding-left: clamp(1.15rem, 3vw, 2.5rem);
+  border-left: 1px solid var(--border);
+}
+
+.career-proof h2 {
+  color: var(--sand);
+  font-size: 1rem;
+}
+
+.career-proof ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.career-proof li + li {
+  border-top: 1px solid var(--border);
+}
+
+.career-proof a {
+  display: block;
+  padding: .75rem 1.35rem .75rem 0;
+  color: var(--sand2);
+  font-size: .85rem;
+  line-height: 1.7;
+  position: relative;
+}
+
+.career-proof a::after {
+  content: '→';
+  position: absolute;
+  top: .87rem;
+  right: 0;
+  color: var(--gold2);
+}
+
+.career-proof a:hover .career-proof-value {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.career-proof-value {
+  display: block;
+  color: var(--gold2);
+  font-family: 'Noto Serif SC', Georgia, serif;
+  font-size: clamp(1.16rem, 2vw, 1.55rem);
+  font-weight: 700;
+}
+
+.career-experience {
+  scroll-margin-top: 58px;
+}
+
+.career-experience .timeline {
+  margin-top: 1.7rem;
+}
+
+.career-experience .tl-item > a {
+  display: inline-flex;
+  margin-top: .45rem;
+  font-size: .86rem;
+}
+
+@media (max-width: 760px) {
+  .page-hero .career-hero {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding-block: 2.8rem 2.2rem;
+  }
+
+  .career-proof {
+    padding: 1rem 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .career-experience {
+    scroll-margin-top: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .page-hero .career-hero {
+    padding-top: 7.2rem;
+    padding-inline: 1.2rem;
+  }
+
+  .career-intro .hero-cta .btn {
+    width: auto;
+  }
+}
+

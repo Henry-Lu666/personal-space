@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 246" width="540" height="246" role="img" aria-labelledby="title desc">
+  <title id="title">审计报告离线校对流程</title>
+  <desc id="desc">先用规则预检，再从本地资料找参照，交给模型生成建议，最后由人工判断是否采纳。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M1 1l7 4-7 4" fill="none" stroke="#9fc8d7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="#9fc8d7" stroke-width="2" marker-end="url(#arrow)">
+    <path d="M240 49h57"/>
+    <path d="M420 95v55"/>
+    <path d="M300 197h-57"/>
+  </g>
+  <g stroke="#496879">
+    <rect x="4" y="4" width="232" height="90" rx="12" fill="#17384b"/>
+    <rect x="304" y="4" width="232" height="90" rx="12" fill="#17384b"/>
+    <rect x="304" y="152" width="232" height="90" rx="12" fill="#17384b"/>
+    <rect x="4" y="152" width="232" height="90" rx="12" fill="#2a3540" stroke="#b89b5d"/>
+  </g>
+  <g font-family="Consolas, monospace" font-size="18" fill="#b4cfdb">
+    <text x="22" y="38">01</text>
+    <text x="322" y="38">02</text>
+    <text x="322" y="186">03</text>
+    <text x="22" y="186" fill="#f0c766">04</text>
+  </g>
+  <g font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="23" font-weight="700" fill="#f7efd8">
+    <text x="62" y="40">规则预检</text>
+    <text x="362" y="40">本地检索</text>
+    <text x="362" y="188">生成建议</text>
+    <text x="62" y="188">人工复核</text>
+  </g>
+  <g font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC',sans-serif" font-size="19" fill="#c3d5df">
+    <text x="22" y="72">检查术语和机构名称</text>
+    <text x="322" y="72">从本地资料找参照</text>
+    <text x="322" y="220">模型逐项给出建议</text>
+    <text x="22" y="220">审阅人决定是否采纳</text>
+  </g>
+</svg>
